@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2005-11-22 18:11+Paris, Madrid\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: .\artub.py:110
+msgid "Project"
+msgstr ""
+
+#: .\plugins\speculoos\__init__.py:41
+msgid "Planes"
+msgstr ""
+
+#: .\plugins\speculoos\__init__.py:42
+msgid "Objects"
+msgstr ""
+
+#: .\plugins\speculoos\__init__.py:43
+msgid "Lights"
+msgstr ""
+
+#: .\plugins\speculoos\__init__.py:44
+msgid "Special area"
+msgstr ""
+
+#: .\plugins\speculoos\__init__.py:45
+msgid "Walk areas"
+msgstr ""
+
+#: .\plugins\speculoos\__init__.py:46
+msgid "Change scene"
+msgstr ""
+
+#: .\plugins\speculoos\__init__.py:47
+msgid "Entry points"
+msgstr ""
+
+#: .\plugins\speculoos\__init__.py:48
+msgid "Scale zones"
+msgstr ""
+

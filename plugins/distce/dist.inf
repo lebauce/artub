@@ -1,0 +1,195 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Cabwiz INF file for Python for Windows CE
+; Based on the AppInst sample from the Pocket PC 2003 SDK
+;   for the following types of devices:
+;       - Pocket PC 2003  ARM CPU
+;       - TODO: Pocket PC 2003  X86 CPU (for use in the Pocket PC 2003 emulator) 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Required "Version" section. 
+;   Contains INF version information
+[Version]
+Signature   = "$Windows NT$"    ; Should be $Windows NT$ or $Windows 98$ or other OS name
+Provider    = "__PROVIDER__"        ; full app name will be "<Provider> <AppName>"
+CESignature = "$Windows CE$"    ; Must be $Windows CE$
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Required "CEStrings" section
+;   Specific strings used by Windows CE AppInstall
+[CEStrings]
+AppName     = "__NAME__" ; full app name will be "<Provider> <AppName>"
+InstallDir  = %CE1%\%AppName% ; (default install directory, which can be changed by end user.)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Optional "Strings" section
+;   Contains string substitutions replacing the key string (enclosed with percent symbols) with the value string
+;   For this example, it will store language-dependent strings
+[Strings]
+PythonVersion = "2.3"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Required "CEDevice" section
+;   Specifies the various types of CAB files that will be generated
+[CEDevice]
+VersionMin = 4.0
+VersionMax = 5.0
+
+[CEDevice.PPC2003_ARM]
+ProcessorType = 2577      ; ARM CPU
+
+; [CEDevice.PPC2003_x86]
+; ProcessorType = 686      ; x86 CPU for emulator
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;[Platform.MS.PocketPC]
+;PlatformString=PocketPC
+;PlatformMin=4.0
+;PlatformMax=4.0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Required "SourceDisksNames" section
+;   Specifies the source directories of the binary files
+;   Format:     
+;       <source ID> = ,<label>,,<source directory>
+;       <source ID> will be used to specify the source files belonging to this directory
+;       <label> is unused
+;       <source directory> is the relative or absolute directory of the source files
+[SourceDisksNames]                      ; CPU-independent files
+1 = ,"Python Library",,__PATH__\python\common\lib
+2 = ,"Python Common",,__PATH__\python\common
+3 = ,"PPC ARM Files",,__PATH__\python\arm
+4 = ,"Common Poujol Files",,__PATH__\poujol
+5 = ,"Poujol PPC ARM Files",,__PATH__\poujol\arm
+
+[SourceDisksNames.PPC2003_ARM]          ; ARM-specific files for Pocket PC 2003
+3 = ,"PPC ARM Files",,__PATH__\python\arm
+
+;[SourceDisksNames.PPC2003_x86]
+;2 = ,"PPC x86 Files",,__PATH__\python\x86
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Required "SourceDisksFiles" section
+;   Specifies the source filenames that will be packaged in the CAB files
+;   Format:     
+;       <filename> = <source ID>
+;       <filename> is the source filename (enclose in doublequotes for long filenames)
+;       <source ID> is the ID used in [SourceDisksNames] to specify the source directory
+[SourceDisksFiles]
+; CPU-independent files
+; "full-python23.zip" = 1
+"python23.zip" = 2
+"os.py" = 1
+; CPU-specific files
+"python23.dll" = 3
+"python.exe" = 3
+"poujol.py" = 4
+"_poujol.dll" = 5
+"SDL.dll" = 5
+; "_csv.pyd" = 2
+; "_socket.pyd" = 2
+; "_symtable.pyd" = 2
+; "_testcapi.pyd" = 2
+; "_tkinter.pyd" = 2
+; "_winreg.pyd" = 2
+; "datetime.pyd" = 2
+; "mmap.pyd" = 2
+; "parser.pyd" = 2
+; "select.pyd" = 2
+; "unicodedata.pyd" = 2
+; "winsound.pyd" = 2
+; pywin32:
+; "pywintypes.dll" = 2
+; "win32event.pyd" = 2
+; "win32gui.pyd" = 2
+; "win32process.pyd" = 2
+; "wince.pyd" = 2
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Required "DefaultInstall" section
+;   Specifies the INF sections for file copying, registry settings and creating shortcuts
+;   INF sections that are not listed here will not be used
+[DefaultInstall]
+CopyFiles   = Files.InstallDir,Libs.InstallDir  ; Required INF sections that lists the files to be copied
+AddReg      = Reg.Version1                      ; Required INF sections that lists the registry entries to be created
+CEShortcuts = Links                             ; Optional INF sections that lists the shortcuts to be created
+;CESetupDLL  = "PythonSetup.dll"             ; Optional "Setup.DLL" to use during installation runtime
+                                                ; - this file must be specified in the [SourceDisksFiles] section
+                                                ; - AppInstall will call the DLL's exported functions (when appropriate):
+                                                ;       Install_Init, Install_Exit, Uninstall_Init, Uninstall_Exit
+;CESelfRegister = "SelfRegister.dll"             ; Optional list of self-registering files that will be registered/unregistered during runtime
+                                                ; - these files must be specified in the [SourceDisksFiles] section
+                                                ; - AppInstall will call the DLL's exported functions (when appropriate):
+                                                ;       DllRegisterServer, DllUnregisterServer
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Required "DestinationDirs" section
+;   Specifies the directories to use for the file copy lists
+;   Format:     
+;       <section name> = 0,<dest directory>
+;       <section name> is the section name used in "[DefaultInstall] CopyFiles"
+;       <dest directory> is the destination directory, using an absolute device path, the directory macros, or the install directory %InstallDir%
+[DestinationDirs]
+;Files.Windows = 0,%CE2%  ; "\Windows" directory
+Files.InstallDir = 0,%InstallDir%
+Libs.InstallDir = 0,%InstallDir%\Lib
+DefaultDestDir = 0,%InstallDir%
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Required sections specified in "[DefaultInstall] CopyFiles" key
+;   Specifies the files to copy
+;   Format:     
+;       <dest filename>,<source filename>,,<copy flags>
+;       <dest filename> is the destination filename (or the source filename if <source filename> is empty)
+;       <source filename> is the source filename
+;       <copy flags> is the copy flags to use
+
+;[Files.Windows]
+; These files are installed in the \Windows directory
+
+[Files.InstallDir]
+; These files are installed in the application install dir, e.g. \Program Files\Python
+"python.exe"
+"python23.dll"
+"python23.zip"
+"poujol.py"
+"_poujol.dll"
+"SDL.dll"
+
+[Libs.InstallDir]
+;"os.py"
+"os.py"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Required sections specified in "[DefaultInstall] AddReg" key
+;   Specifies the registry entries to create
+;   Format:     
+;       <reg root>,<reg key>,<reg val>,<reg flags>,<reg data>[,<reg data>]
+;       <reg root> is HKCR, HKLM or HKCU
+;       <reg key> is the registry key name
+;       <reg val> is the registry value name, which is set to "default" if empty
+;       <reg flags> is the registry type/flags to use
+;       <reg data> is the numeric/string registry data, which depends on the <reg flags> used
+[Reg.Version1]
+HKLM,Software\%AppName%,"default",0x00000002,%InstallDir%
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sections specified in "[DefaultInstall] CEShortcuts" key
+;   Specifies the shortcuts to create
+;   Format:     
+;       <shortcut filename>,<shortcut type>,<target file/path>[,<standard dest path>]
+;       <shortcut filename> is the filename of the shortcut
+;       <shortcut type> specifies if the shortcut is to a file or a folder
+;       <target file/path> is the target filename or pathname, which depends on the <shortcut type> flag used
+;       <standard dest path> is an optional destination directory macro (or %InstallDir%) to use
+[Links]
+"python.exe",0,"python.exe",%CE11%         ; shortcut to a file, created in the standard destination path \Windows\Start Menu\Programs
+

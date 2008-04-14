@@ -1,0 +1,16 @@
+for i in `find -name *pyc`
+do
+ rm $i -f
+done
+for i in `find -name CVS`
+do
+ rm $i -Rf
+done
+for i in `find -name *~`
+do
+ rm $i -Rf
+done
+for i in `find -name \.svn`
+do
+ rm $i -Rf
+done

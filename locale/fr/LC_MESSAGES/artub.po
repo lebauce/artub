@@ -1,0 +1,983 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Glumol 1.0\n"
+"POT-Creation-Date: 2005-11-22 18:11+Paris, Madrid\n"
+"PO-Revision-Date: 2007-10-22 21:27+0100\n"
+"Last-Translator: Bob Lebauce <bob@glumol.com>\n"
+"Language-Team: The Glumol Team <bob@glumol.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+
+#: artub.py:162
+#: artub.py:964
+msgid "Import"
+msgstr "Importer"
+
+#: artub.py:226
+msgid "New_"
+msgstr "Nouveau_"
+
+#: artub.py:262
+msgid "New"
+msgstr "Nouveau"
+
+#: artub.py:266
+#: artub.py:958
+msgid "Delete"
+msgstr "Supprimer"
+
+#: artub.py:316
+msgid "New sound"
+msgstr "Nouveau son"
+
+#: artub.py:322
+msgid "New_sound"
+msgstr "NouveauSon"
+
+#: artub.py:338
+#: artub.py:499
+msgid "Project bar"
+msgstr "Bar de projet"
+
+#: artub.py:351
+#: artub.py:500
+#: artub.py:707
+msgid "Project"
+msgstr "Projet"
+
+#: artub.py:375
+msgid "Templates"
+msgstr "Modèles"
+
+#: artub.py:381
+#: artub.py:857
+msgid "Sounds"
+msgstr "Sons"
+
+#: artub.py:493
+#: artub.py:494
+#: debugger/glumoldebugger.py:482
+msgid "Shell"
+msgstr "Terminal"
+
+#: artub.py:505
+#: artub.py:506
+msgid "Notebook"
+msgstr "Carnet"
+
+#: artub.py:513
+msgid "Startup"
+msgstr "Démarrage"
+
+#: artub.py:546
+#: artub.py:578
+#: artub.py:579
+msgid "Main toolbar"
+msgstr "Barre d'outil principale"
+
+#: artub.py:556
+#: artub.py:600
+msgid "Create a new project"
+msgstr "Créer un nouveau projet"
+
+#: artub.py:556
+#: artub.py:600
+msgid "New project"
+msgstr "Nouveau projet"
+
+#: artub.py:558
+#: artub.py:604
+msgid "Open a project"
+msgstr "Ouvrir un projet"
+
+#: artub.py:560
+#: artub.py:608
+msgid "Save your project"
+msgstr "Enregistrer votre projet"
+
+#: artub.py:562
+msgid "Cut to the clipboard"
+msgstr "Couper"
+
+#: artub.py:564
+msgid "Copy to the clipboard"
+msgstr "Copier"
+
+#: artub.py:566
+msgid "Paste from the clipboard"
+msgstr "Coller"
+
+#: artub.py:568
+#: artub.py:633
+msgid "Undo last change"
+msgstr "Annuler la dernière modification"
+
+#: artub.py:570
+#: artub.py:638
+msgid "Redo last change"
+msgstr "Refaire la dernière action"
+
+#: artub.py:604
+msgid "Open"
+msgstr "Ouvrir"
+
+#: artub.py:608
+msgid "Save"
+msgstr "Enregistrer"
+
+#: artub.py:612
+msgid "Save as"
+msgstr "Enregistrer sous"
+
+#: artub.py:612
+msgid "Save as..."
+msgstr "Enregistrer sous..."
+
+#: artub.py:617
+msgid "Exit"
+msgstr "Quitter"
+
+#: artub.py:617
+msgid "Exit Artub"
+msgstr "Quitter Artub"
+
+#: artub.py:618
+msgid "File"
+msgstr "Fichier"
+
+#: artub.py:633
+msgid "Undo"
+msgstr "Annuler"
+
+#: artub.py:638
+msgid "Redo"
+msgstr "Refaire"
+
+#: artub.py:642
+msgid "Cut"
+msgstr "Couper"
+
+#: artub.py:642
+msgid "Cut selection and put it into the clipboard"
+msgstr "Couper la sélection et la mettre dans le presse-papier"
+
+#: artub.py:646
+msgid "Copy"
+msgstr "Copier"
+
+#: artub.py:646
+msgid "Copy selection into the clipboard"
+msgstr "Copier dans le presse-papier"
+
+#: artub.py:651
+msgid "Paste"
+msgstr "Coller"
+
+#: artub.py:651
+msgid "Paste from clipboard"
+msgstr "Coller le contenu du presse-papier"
+
+#: artub.py:654
+msgid "Edit"
+msgstr "Editer"
+
+#: artub.py:657
+msgid "Find"
+msgstr "Chercher"
+
+#: artub.py:674
+#: artub.py:683
+msgid "Find next"
+msgstr "Chercher l'occurence suivante"
+
+#: artub.py:676
+#: artub.py:684
+msgid "Run"
+msgstr "Lancer"
+
+#: artub.py:676
+#: artub.py:684
+msgid "Run your game"
+msgstr "Lancer le jeu"
+
+#: artub.py:679
+#: artub.py:687
+msgid "Toggle breakpoint at current line"
+msgstr "Activer/Désactiver le point d'arrêt de la ligne courante"
+
+#: artub.py:679
+#: artub.py:687
+#: debugbar.py:19
+msgid "Toggle breakpoint"
+msgstr "Activer/Désactiver le point d'arrêt"
+
+#: artub.py:702
+msgid "Show and change your project's properties"
+msgstr "Afficher et modifier les propriétés de votre projet"
+
+#: artub.py:702
+#: plugins/akiki/__init__.py:410
+#: propertiesbar/propertiesbar.py:64
+msgid "Properties"
+msgstr "Propriétés"
+
+#: artub.py:714
+#: artub.py:720
+msgid "Show Artub's options"
+msgstr "Voir les options d'Artub"
+
+#: artub.py:714
+#: projectproperties.py:13
+#: showoptions.py:19
+#: showoptions.py:54
+msgid "Options"
+msgstr "Options"
+
+#: artub.py:720
+msgid "Check for updates"
+msgstr "Mises à jour"
+
+#: artub.py:725
+#: plugins/scumm/__init__.py:83
+#: redistributable.py:10
+msgid "Tools"
+msgstr "Outils"
+
+#: artub.py:728
+msgid "View"
+msgstr "Vue"
+
+#: artub.py:733
+msgid "Get help"
+msgstr "Obtenir de l'aide"
+
+#: artub.py:733
+msgid "Help"
+msgstr "Aide"
+
+#: artub.py:738
+msgid "About Artub"
+msgstr "A propos d'Artub"
+
+#: artub.py:741
+msgid "&Help"
+msgstr "&Aide"
+
+#: artub.py:887
+#: builder/optionspage.py:39
+#: debugbar.py:8
+#: debugger/glumoldebugger.py:472
+msgid "Debug"
+msgstr "Debug"
+
+#: artub.py:961
+msgid "Export"
+msgstr "Exporter"
+
+#: artub.py:968
+msgid "New_animation"
+msgstr "NouvelleAnimation"
+
+#: artub.py:1014
+#: artub.py:1015
+msgid "New_font"
+msgstr "NouvellePolice"
+
+#: artub.py:1092
+#: resourceeditor.py:400
+msgid "add "
+msgstr "ajouter"
+
+#: artub.py:1140
+msgid "delete "
+msgstr "supprimer"
+
+#: artub.py:1146
+#: artub.py:1160
+msgid "Glumol resource"
+msgstr "Ressource Glumol"
+
+#: artub.py:1146
+#: artub.py:1160
+#: artub.py:1360
+#: artub.py:1382
+msgid "All files"
+msgstr "Tous les fichiers"
+
+#: artub.py:1147
+msgid "Import from ..."
+msgstr "Import depuis ..."
+
+#: artub.py:1161
+msgid "Export to ..."
+msgstr "Exporter vers ..."
+
+#: artub.py:1258
+msgid "You are already running the lastest version ("
+msgstr "Vous possédez déjà la dernière version ("
+
+#: artub.py:1259
+msgid "No update available"
+msgstr "Aucune mise à jour n'est disponible"
+
+#: artub.py:1275
+msgid "Artub has been successfully updated to version "
+msgstr "Artub a"
+
+#: artub.py:1276
+msgid "Update successfull"
+msgstr "Succès de la mise à jour"
+
+#: artub.py:1360
+#: artub.py:1382
+msgid "Glumol project"
+msgstr "Projet Glumol"
+
+#: artub.py:1362
+msgid "Choose a file"
+msgstr "Choisissez un fichier"
+
+#: artub.py:1384
+msgid "Save file as..."
+msgstr "Enregistrer sous ..."
+
+#: artub.py:1393
+msgid "Some changes has been made. Would you like to save your projet ?"
+msgstr "Des modifications ont été faites. Voulez-vous les enregistrer ?"
+
+#: artub.py:1394
+msgid "Save project ?"
+msgstr "Enregistrer le projet ?"
+
+#: artub.py:1436
+msgid "Artub"
+msgstr "Artub"
+
+#: artuboptions.py:16
+msgid "Load last project at startup"
+msgstr "Charger le dernier projet utilisé au démarrage"
+
+#: builder/optionspage.py:20
+msgid "Icon"
+msgstr "Icône"
+
+#: builder/optionspage.py:24
+msgid "Readme file"
+msgstr "Fichier Readme (Lisezmoi)"
+
+#: builder/optionspage.py:28
+msgid "End of user license agreement file"
+msgstr ""
+
+#: builder/optionspage.py:34
+msgid "Optimization"
+msgstr "Optimisation"
+
+#: builder/optionspage.py:38
+msgid "Default"
+msgstr "Par défaut"
+
+#: builder/optionspage.py:40
+msgid "All"
+msgstr "Tous"
+
+#: builder/optionspage.py:44
+msgid "Use upx"
+msgstr "Utiliser upx"
+
+#: builder/optionspage.py:48
+msgid "Do not create an unique file"
+msgstr "Ne pas créer un fichier unique"
+
+#: builder/optionspage.py:52
+msgid "Display console"
+msgstr "Afficher la console"
+
+#: builder/optionspage.py:56
+msgid "Use Tcl/Tk"
+msgstr "Utiliser Tcl/Tk"
+
+#: builder/optionspage.py:60
+msgid "Executable's informations (Windows only)"
+msgstr "Informations sur l'exécutable (Windows seulement)"
+
+#: builder/optionspage.py:64
+msgid "Product name"
+msgstr "Nom du produit"
+
+#: builder/optionspage.py:71
+msgid "Company"
+msgstr "Compagnie"
+
+#: builder/optionspage.py:78
+msgid "Version"
+msgstr "Version"
+
+#: builder/optionspage.py:86
+msgid "Description"
+msgstr "Description"
+
+#: builder/optionspage.py:93
+msgid "Copyrights"
+msgstr "Droits"
+
+#: builder/optionspage.py:100
+msgid "License"
+msgstr "Licence"
+
+#: choosename.py:7
+msgid "Choose a name"
+msgstr "Choisissez un nom"
+
+#: choosename.py:32
+#: newproject.py:129
+#: plugins/stdtemplates/__init__.py:47
+#: projectproperties.py:29
+#: showoptions.py:24
+msgid "Ok"
+msgstr "Ok"
+
+#: choosename.py:36
+#: newproject.py:134
+#: plugins/stdtemplates/__init__.py:52
+#: projectproperties.py:34
+#: showoptions.py:29
+msgid "Cancel"
+msgstr "Annuler"
+
+#: choosename.py:50
+msgid ") already has this name"
+msgstr ") porte déjà ce nom"
+
+#: choosename.py:50
+msgid "An object ("
+msgstr "Un objet ("
+
+#: choosename.py:51
+msgid "Please choose an other name"
+msgstr "Choisissez un autre nom"
+
+#: choosename.py:57
+msgid "New_object"
+msgstr "NouvelObjet"
+
+#: debugbar.py:6
+#: debugger/glumoldebugger.py:489
+#: debugger/glumoldebugger.py:490
+msgid "Debug bar"
+msgstr "Barre Debug"
+
+#: debugbar.py:21
+msgid "Go"
+msgstr "Démarrer"
+
+#: debugbar.py:24
+msgid "Step"
+msgstr "Pas à pas"
+
+#: debugbar.py:26
+msgid "Next"
+msgstr "Instruction suivante"
+
+#: debugbar.py:28
+msgid "Return"
+msgstr "Retour"
+
+#: debugbar.py:29
+msgid "Continue"
+msgstr "Continuer"
+
+#: debugbar.py:31
+msgid "Go to cursor"
+msgstr "Executer jusqu'au curseur"
+
+#: debugbar.py:35
+msgid "Stop"
+msgstr "Arrêter"
+
+#: debugger/glumoldebugger.py:457
+msgid "Filename"
+msgstr "Nom de fichier"
+
+#: debugger/glumoldebugger.py:458
+msgid "Line"
+msgstr "Ligne"
+
+#: debugger/glumoldebugger.py:459
+#: propertiesbar/newproperty.py:21
+msgid "Name"
+msgstr "Nom"
+
+#: debugger/glumoldebugger.py:479
+msgid "Call stack"
+msgstr "Pile des appels"
+
+#: debugger/glumoldebugger.py:512
+msgid " was raised"
+msgstr " a été levée"
+
+#: debugger/glumoldebugger.py:512
+msgid "An uncaught exception "
+msgstr "Une exception non interceptée"
+
+#: debugger/glumoldebugger.py:513
+msgid "Message: "
+msgstr "Message :"
+
+#: debugger/glumoldebugger.py:514
+msgid "Resource: "
+msgstr "Ressource :"
+
+#: debugger/glumoldebugger.py:515
+#: plugins/akiki/__init__.py:141
+msgid "Line "
+msgstr "Ligne"
+
+#: debugger/glumoldebugger.py:521
+msgid "An error has occured"
+msgstr "Une erreur est survenue"
+
+#: newproject.py:80
+msgid "Name :"
+msgstr "Nom :"
+
+#: newproject.py:81
+#: newproject.py:85
+msgid "The full name of your game"
+msgstr "Le nom complet de votre jeu"
+
+#: newproject.py:93
+msgid "Short name :"
+msgstr "Nom abbrégé"
+
+#: newproject.py:94
+#: newproject.py:98
+msgid "Will be used to name files"
+msgstr "Sera utilisé pour nommer les fichiers"
+
+#: newproject.py:156
+msgid "The specified folder does not exist"
+msgstr "Le dossier spécifié n'existe pas"
+
+#: newproject.py:157
+msgid "Invalid folder"
+msgstr "Dossier invalide"
+
+#: newproject.py:166
+msgid "The directory already exists. Do you want to continue ?"
+msgstr "Un dossier du même nom existe déjà. Voulez-vous utiliser ce dossier ?"
+
+#: newproject.py:167
+msgid "Warning"
+msgstr "Attention"
+
+#: newproject.py:176
+msgid "Cannot create directory "
+msgstr "Impossible de créer le dossier"
+
+#: newproject.py:176
+#: plugins/akiki/__init__.py:294
+#: plugins/akiki/__init__.py:310
+#: plugins/distce/__init__.py:34
+#: plugins/mouquet/__init__.py:99
+msgid "Error"
+msgstr "Erreur"
+
+#: plugins/akiki/__init__.py:68
+#: plugins/akiki/__init__.py:69
+#: plugins/akiki/__init__.py:91
+#: plugins/akiki/__init__.py:92
+#: plugins/akiki/__init__.py:122
+#: plugins/akiki/__init__.py:123
+msgid "Find String Not Found"
+msgstr "Chaîne non trouvée"
+
+#: plugins/akiki/__init__.py:79
+msgid " occurences replaced"
+msgstr "occurrence remplacées"
+
+#: plugins/akiki/__init__.py:80
+msgid "Replace done"
+msgstr "Remplacement terminé"
+
+#: plugins/akiki/__init__.py:103
+msgid "Find / Replace"
+msgstr "Chercher / Remplacer"
+
+#: plugins/akiki/__init__.py:141
+msgid ", column "
+msgstr ", colonne"
+
+#: plugins/akiki/__init__.py:190
+msgid "change text"
+msgstr "modification de texte"
+
+#: plugins/akiki/__init__.py:292
+#: plugins/akiki/__init__.py:308
+msgid "There is an error in your code at line "
+msgstr "Il y a une erreur dans votre code à la ligne"
+
+#: plugins/akiki/__init__.py:401
+msgid "New animation"
+msgstr "Nouvelle animation"
+
+#: plugins/akiki/__init__.py:403
+msgid "New font"
+msgstr "Nouvelle police"
+
+#: plugins/akiki/__init__.py:405
+msgid "New script"
+msgstr "Nouveau script"
+
+#: plugins/akiki/__init__.py:407
+msgid "New dialog"
+msgstr "Nouveau dialogue"
+
+#: plugins/basic_templates/__init__.py:419
+msgid "Camera follow"
+msgstr "Suivi de caméra"
+
+#: plugins/basic_templates/__init__.py:420
+msgid "Make the camera follow a character or an object"
+msgstr "Permet que la caméra suive un personnage ou un objet"
+
+#: plugins/basic_templates/__init__.py:472
+msgid "Change the image of the sprite when the mouse cursor is on it"
+msgstr "Changer l'image d'un sprite quand le curseur de la souris est dessus"
+
+#: plugins/basic_templates/__init__.py:490
+msgid "A sprite that displays text"
+msgstr "Un sprite qui affiche du texte"
+
+#: plugins/basic_templates/__init__.py:516
+msgid "Shadow"
+msgstr "Ombre"
+
+#: plugins/basic_templates/__init__.py:533
+msgid "Make the sprite act as a button"
+msgstr "Transforme un sprite en un bouton"
+
+#: plugins/basic_templates/__init__.py:548
+msgid "The scene can play a single music"
+msgstr "Permet à une scène de jouer une musique de fond"
+
+#: plugins/distce/__init__.py:33
+msgid "Cannot find CABWIZ.EXE"
+msgstr "Impossible de trouver le fichier CABWIZ.EXE"
+
+#: plugins/distce/distceoptions.py:20
+msgid "CABWIZ.EXE full path"
+msgstr "Chemin entier de CABWIZ.EXE"
+
+#: plugins/mouquet/__init__.py:50
+msgid "Virtual frames"
+msgstr "Frames virtuelles"
+
+#: plugins/mouquet/__init__.py:59
+msgid "Image list"
+msgstr "Liste des images"
+
+#: plugins/mouquet/__init__.py:62
+msgid "Images"
+msgstr "Images"
+
+#: plugins/mouquet/__init__.py:63
+#: plugins/mouquet/__init__.py:236
+#: plugins/mouquet/__init__.py:237
+msgid "Frames"
+msgstr "Frames"
+
+#: plugins/mouquet/__init__.py:92
+#: plugins/mouquet/__init__.py:104
+#: plugins/mouquet/__init__.py:351
+msgid "Frame"
+msgstr ""
+
+#: plugins/mouquet/__init__.py:98
+msgid "You must add an image first"
+msgstr "Vous devez au préalable ajouter une image"
+
+#: plugins/mouquet/__init__.py:110
+#: plugins/mouquet/__init__.py:115
+#: plugins/mouquet/__init__.py:350
+msgid "Image"
+msgstr "Image"
+
+#: plugins/mouquet/__init__.py:370
+msgid "Point("
+msgstr "Point("
+
+#: plugins/mouquet/__init__.py:501
+#: plugins/speculoos/__init__.py:480
+msgid "View as script"
+msgstr "Voir le script"
+
+#: plugins/scumm/__init__.py:86
+msgid "Import scene from a SCUMM game"
+msgstr "Importer une scène depuis un jeu SCUMM"
+
+#: plugins/scumm/__init__.py:92
+msgid "Choose the root directory of a SCUMM game"
+msgstr "Sélectionnez le répertoire qui contient le jeu"
+
+#: plugins/scumm/__init__.py:97
+msgid "Choose a scene"
+msgstr "Choisissez une scène"
+
+#: plugins/scumm/__init__.py:122
+msgid "Importing scumm scene"
+msgstr "Importation de la scène en cours"
+
+#: plugins/scumm/__init__.py:128
+msgid "add Scene"
+msgstr "ajouter une scène"
+
+#: plugins/speculoos/__init__.py:32
+#: plugins/speculoos/__init__.py:44
+msgid "Planes"
+msgstr "Plans"
+
+#: plugins/speculoos/__init__.py:33
+#: plugins/speculoos/__init__.py:45
+msgid "Objects"
+msgstr "Objets"
+
+#: plugins/speculoos/__init__.py:34
+#: plugins/speculoos/__init__.py:48
+msgid "Lights"
+msgstr "Lumières"
+
+#: plugins/speculoos/__init__.py:35
+#: plugins/speculoos/__init__.py:47
+msgid "Sprites"
+msgstr "Sprites"
+
+#: plugins/speculoos/__init__.py:36
+#: plugins/speculoos/__init__.py:49
+msgid "Walk areas"
+msgstr "Zone de marche"
+
+#: plugins/speculoos/__init__.py:37
+#: plugins/speculoos/__init__.py:50
+msgid "Change scene"
+msgstr "Changements de scène"
+
+#: plugins/speculoos/__init__.py:38
+#: plugins/speculoos/__init__.py:51
+msgid "Entry points"
+msgstr "Points d'entrée"
+
+#: plugins/speculoos/__init__.py:39
+#: plugins/speculoos/__init__.py:52
+msgid "Scale zones"
+msgstr "Echelle"
+
+#: plugins/speculoos/__init__.py:40
+#: plugins/speculoos/__init__.py:46
+msgid "Characters"
+msgstr "Personnages"
+
+#: plugins/speculoos/__init__.py:41
+#, fuzzy
+msgid "Special areas"
+msgstr "Zones spéciales"
+
+#: plugins/speculoos/__init__.py:53
+msgid "Others"
+msgstr "Autres"
+
+#: plugins/speculoos/__init__.py:180
+msgid "Scene editor"
+msgstr "Editeur de scène"
+
+#: plugins/speculoos/listboxes.py:22
+msgid "Create a new box"
+msgstr "Créer une nouvelle boîte"
+
+#: plugins/speculoos/listboxes.py:28
+msgid "Create a new point"
+msgstr "Créer un nouveau point"
+
+#: plugins/speculoos/listboxes.py:34
+msgid "Delete a point"
+msgstr "Supprimer un point"
+
+#: plugins/stdtemplates/__init__.py:13
+msgid "More informations are needed"
+msgstr "De plus amples informations sont nécessaires"
+
+#: plugins/stdtemplates/__init__.py:25
+#: plugins/stdtemplates/__init__.py:29
+msgid "Main character's name :"
+msgstr "Le nom du héro"
+
+#: plugins/stdtemplates/__init__.py:36
+msgid "First scene's name :"
+msgstr "Nom de la première scène"
+
+#: plugins/stdtemplates/__init__.py:40
+msgid "First scene's name"
+msgstr "Nom de la première scène"
+
+#: plugins/stdtemplates/__init__.py:77
+msgid "Monkey Island 2 style"
+msgstr "Style Monkey Island 2"
+
+#: plugins/stdtemplates/__init__.py:78
+msgid "Provides a verb interface like in the Monkey Island 2 game"
+msgstr "Fournit une interface de type 'verbe' comme celle utilisée dans le jeu Monkey Island 2"
+
+#: plugins/stdtemplates/__init__.py:79
+msgid "Curse of Monkey Island style"
+msgstr "Style The Cursor of Monkey Island"
+
+#: plugins/stdtemplates/__init__.py:80
+msgid "Provides a popup interface with 3 actions (look, use, talk), like in the Curse of Monkey Island game"
+msgstr "Fournit une interface de type 'popup', avec 3 actions : regarder, utiliser, parler), comme celle utilisée par le jeu The Curse of Monkey Island (Monkey Island 3)"
+
+#: plugins/stdtemplates/__init__.py:81
+msgid "Empty game"
+msgstr "Un jeu vide"
+
+#: plugins/stdtemplates/__init__.py:82
+msgid "An empty game"
+msgstr "Un jeu vide"
+
+#: plugins/veneficus/__init__.py:56
+msgid "Play"
+msgstr "Jouer"
+
+#: plugins/veneficus/__init__.py:61
+msgid "View source"
+msgstr "Voir le script"
+
+#: project.py:28
+msgid "None"
+msgstr "Aucun"
+
+#: project.py:159
+msgid "Do you want this image to be copied into your project's folder ?"
+msgstr "Voulez-vous que cette image soit copiée dans le dossier de votre jeu ?"
+
+#: project.py:160
+msgid "Copy image into project's folder"
+msgstr "Copier l'image dans le dossier de votre jeu"
+
+#: projectproperties.py:25
+msgid "Builder"
+msgstr "Constructeur"
+
+#: propertiesbar/behaviorswindow.py:24
+#: propertiesbar/behaviorswindow.py:66
+msgid "Behaviour"
+msgstr "Comportement"
+
+#: propertiesbar/newproperty.py:5
+#: propertiesbar/propertiesbar.py:547
+msgid "New property"
+msgstr "Nouvelle propriété"
+
+#: propertiesbar/newproperty.py:18
+msgid "at creation time"
+msgstr "au moment de la création"
+
+#: propertiesbar/newproperty.py:18
+msgid "global"
+msgstr "globale"
+
+#: propertiesbar/newproperty.py:31
+msgid "Value"
+msgstr "Valeur"
+
+#: propertiesbar/propertiesbar.py:24
+msgid "Properties Bar"
+msgstr "Bar de propriété"
+
+#: propertiesbar/propertiesbar.py:41
+msgid "Create a new property"
+msgstr "Créer une nouvelle propriété"
+
+#: propertiesbar/propertiesbar.py:46
+msgid "Delete property"
+msgstr "Supprimer cette propriété"
+
+#: propertiesbar/propertiesbar.py:52
+msgid "Filter properties"
+msgstr "Filtrer les propriétés"
+
+#: propertiesbar/propertiesbar.py:65
+msgid "Events"
+msgstr "Evènements"
+
+#: propertiesbar/propertiesbar.py:78
+msgid "Behaviors"
+msgstr "Comportements"
+
+#: propertiesbar/propertiesbar_actions.py:18
+msgid "change "
+msgstr "changer"
+
+#: propertiesbar/propertyeditors.py:403
+msgid "All files (*.*)"
+msgstr "Tous les fichiers (*.*)"
+
+#: propertiesbar/propertyeditors.py:942
+msgid " event "
+msgstr " évènement"
+
+#: propertiesbar/propertyeditors.py:990
+msgid "(delete)"
+msgstr "(supprimer)"
+
+#: propertiesbar/propertyeditors.py:990
+msgid "(show)"
+msgstr "(afficher)"
+
+#: propertiesbar/propertyeditors.py:991
+msgid "(add)"
+msgstr "(ajouter)"
+
+#: propertiesbar/propertyeditors.py:1045
+msgid "Inherited from "
+msgstr "Hérité de "
+
+#: redistributable.py:12
+msgid "Build redistributable"
+msgstr "Contruire un exécutable distribuable"
+
+#: resourceeditor.py:100
+msgid "You need to import a template of type "
+msgstr "Vous devez importer un modèle du type"
+
+#: resourceeditor.py:101
+msgid "Failed to import"
+msgstr "Impossible de charger"
+
+#: startuppage.py:309
+msgid "Back"
+msgstr "Retour"
+
+#: startuppage.py:313
+msgid "Forward"
+msgstr "Suivant"
+
+#: toolbarmanager.py:110
+msgid "Shows "
+msgstr ""
+
+#: undoredo.py:47
+msgid "Undo "
+msgstr "Annuler"
+
+#: undoredo.py:51
+msgid "Redo "
+msgstr "Refaire"
+

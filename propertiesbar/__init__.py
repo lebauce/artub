@@ -1,0 +1,1 @@
+from propertiesbar import PropertiesBar

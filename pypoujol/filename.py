@@ -1,0 +1,1 @@
+class Filename(str): pass

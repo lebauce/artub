@@ -1,0 +1,13 @@
+mikmod: setupmikmod.cpp (added initialized_once + test)
+
+system: thread_pthread.cpp CL_Thread::wait
+	Added "if (impl) { ... }"
+
+gl/agl: display_window_opengl.h
+    Make share_context and disp_ref_count public
+gl/xgl: display_window_opengl.h
+    Make share_context, disp(?), disp_ref_count public
+    
+CL_FramerateCounter.cpp: sleep
+
+Core/System/system.h: susp_start public

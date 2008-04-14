@@ -1,0 +1,107 @@
+body { 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #000000;
+}
+
+.gbody { 
+	background-color: #3F004F;
+	background-repeat: repeat;
+	background-attachment: scroll;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #000000;
+	border: #FF6633
+}
+
+a:link {
+	color: #AA00AA;
+	text-decoration: none;
+	background-color: transparent
+}
+
+a:active {
+	color: #CCCCCC;
+	text-decoration: none;
+	background-color: transparent
+}
+
+a:visited {
+	color: #110099;
+	text-decoration: none;
+	background-color: transparent
+}
+
+a:hover {
+	color: #FF0000;
+	text-decoration: none;
+	background-color: transparent
+}
+
+.main { 
+	border-collapse: separate;
+	border: 2pt #FF9900 double;
+	color: #000000;
+	background-color: #FF6600
+}
+
+.menu {
+	font-weight: bold; 
+	font-size: 10pt
+}
+
+.comment {
+	color: #006000;
+	background-color: #FFFFFF;
+	border: 1px solid;
+
+}
+
+.projects {
+	border: 1pt #000000 solid;
+	color: #000000;
+        padding: 10px;
+}
+
+.project {
+	border: 1pt #000000 solid;
+}
+
+.smalltab {
+	margin: 0px 0px 0px 0px;
+	background-color: #FFE21F;
+	color: #000000;
+	border-top: 1pt solid #000000;
+	border-right: 1pt solid #000000;
+	border-bottom: 1pt solid #000000;
+	border-left: 1pt solid #000000;
+
+}
+
+TD {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	FONT-SIZE: 10pt
+}
+
+TABLE {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	FONT-SIZE: 10pt
+}
+.activeaction {
+	background-color: #0099FF;
+	text-align: center;
+	vertical-align: middle;
+
+}
+.inactiveaction {
+	text-align: center;
+	vertical-align: middle;
+}
+.allblack {
+	background-color: #FFFFFF;
+	color: #000000;
+	background-image: url(line.png);
+
+
+
+}

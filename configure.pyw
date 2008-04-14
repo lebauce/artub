@@ -1,0 +1,2 @@
+exec open('configure.py')
+

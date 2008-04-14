@@ -1,0 +1,1 @@
+ezsetup -l english -i dist.ini -r readme.txt -e eula.txt -o UnJeu.exe
