@@ -58,7 +58,7 @@ class Companion(object):
         for i in l:
             ind = -1
             z = None
-            if type(i) == tuple:  # Only insert lists to be able to call sort
+            if type(i) == tuple:  # Only insert lists so that we can call sort
                 ind = find(i[0], self.variables)
                 z = list(i)
             elif type(i) != list:
@@ -96,4 +96,4 @@ class PointCompanion(Companion): pass
 class FilenameCompanion(Companion): pass
 class FontCompanion(Companion): pass
 
-#Companion.ext_companions["Sprite"] = (pypoujol.Sprite, ["music_path", FilenameCompanion()])
+# Companion.ext_companions["Sprite"] = (pypoujol.Sprite, ["music_path", FilenameCompanion()])

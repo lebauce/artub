@@ -329,7 +329,8 @@ class CheckBoxIEC(BevelIEC):
             self.editorCtrl.SetDimensions(2, idx*Preferences.oiLineHeight +1,
             self.editorCtrl.GetSize().x, Preferences.oiLineHeight-2)
         BevelIEC.setIdx(self, idx)
-#        InspectorEditorControl.setIdx(self, idx)
+        # InspectorEditorControl.setIdx(self, idx)
+
     def OnSelect(self, event):
         self.setValue(self.truefalseMap[event.IsChecked()])
 
@@ -385,14 +386,6 @@ class AnimationPanel(wx.Panel):
                 return None
             except: pass # Not a class ?
 
-        #gns = wx.GetApp().gns
-        #anims = []
-        #for i in gns.globals.keys():
-        #    if is_derived_from(gns.globals[i], Animation):
-        #        anims.append(i)
-        
-        # anims = wx.GetApp().frame.project.get_all_childs_of_type(CAnimation)
-
         if sys.platform == "darwin": pos = (20, 20)
         else: pos = (20, 20)
         cancel = wx.Button(self, 30, "Cancel\n", pos = pos, size = (thumbnail_size, thumbnail_size))
@@ -408,18 +401,11 @@ class AnimationPanel(wx.Panel):
             size = (thumbnail_size, thumbnail_size))
         newanimbutton.Bind(wx.EVT_BUTTON, self.on_new_anim_button)
         n += 1
-        # print "anim_classes", pypoujol.animation.anim_classes
         self.buttons = []
 
         for i, filename, j in pypoujol.animation.anim_classes.values():
             if (not filename) or (not filename[0]): continue
             filename = filename[0]
-            # i = gns.globals[i]
-            # if not hasattr(i, "filename"): continue
-            # try:
-            #    print i, j, "parent_class", j.parent_class
-            #    print i.__metaclass__.parent_class
-            # except: print
             bmp = self.cache.get_thumbnail(filename)
             if not bmp: continue
             b = wx.BitmapButton(self, 30 + n, bmp, ((n % 4) * thumbnail_size + 20, (n / 4) * thumbnail_size + 20), (thumbnail_size, thumbnail_size))
@@ -484,7 +470,6 @@ class AnimationPanel(wx.Panel):
                 dlg.Centre() 
 
                 if dlg.ShowModal() == wx.ID_OK:
-                    # show the selected file
                     import shutil
                     filename = wx.GetApp().frame.project.project_path + '/' + os.path.basename(dlg.GetFile())
                     shutil.copyfile(dlg.GetFile(), filename)
@@ -581,26 +566,14 @@ class AnimationIEC(InspectorEditorControl):
         self.editorCtrl.SetDimensions(-2, idx*oiLineHeight-2,
          sizeX, oiLineHeight+3)
 
-        #self.cal = cal.CalendarCtrl(self.win, -1, pos = (0,0))
-        #bz = self.cal.GetBestSize()
-        #self.win.SetSize(bz)
-
         self.cal = AnimationPanel(self.win, self, (0,0))
         self.cal.resource = self.resource
         
         self.editorCtrl.SetValue(value)
-        
-        # This method is needed to set the contents that will be displayed
-        # in the popup
         self.editorCtrl.SetPopupContent(self.win)
-        #EVT_CHECKBOX(self.editorCtrl, self.wID, self.OnSelect)
-        #def OnWinSize(evt, win=self.cal):
-        #    win.SetSize(evt.GetSize())
-        #wx.EVT_SIZE(self.editorCtrl, OnWinSize)
-
         InspectorEditorControl.createControl(self)
-        # self.cal.SetFocus()
         self.cal.create_buttons()
+
         wx.EVT_KILL_FOCUS(self.cal, self.on_left_button_down)
 
     def on_left_button_down(self, evt):

@@ -30,7 +30,7 @@ class OptionsWindow(wx.Dialog):
               parent=self, style=0)
 
         self.notebook = fnb.FlatNotebook(id=wxID_WXOPTIONSNOTEBOOK,
-              name='notebook1', parent=self, size=wx.Size(860,548), style=fnb.FNB_NO_X_BUTTON)
+              name='notebook1', parent=self, style=fnb.FNB_NO_X_BUTTON)
 
         self.create_plugins_pages()
         

@@ -5,6 +5,7 @@ __version__ = "1.0"
 
 from depplatform import get_image_path, set_sys_path
 set_sys_path()
+from configmanager import config
 
 print "Running Artub version", __version__
 import gettext
@@ -12,13 +13,21 @@ gettext.install('artub', 'locale', unicode=1)
 import locale
 import wx
 print "Using wxPython", wx.VERSION_STRING
+
+def set_language(lang):
+    gettext.translation('artub', 'locale', languages=[lang]).install(unicode=1)
+    config["lang"] = lang
+    
 try:
-    info = wx.Locale.GetLanguageInfo(wx.Locale.GetSystemLanguage())
-    langue = info.CanonicalName[:2]
-    lang1 = gettext.translation('artub', 'locale', languages=[langue])
-    lang1.install(unicode=1)
+    langue = config["lang"]
+    set_language(langue)
 except:
-    print "Cannot find a translation for your language '", locale.getdefaultlocale(), "'. Defaulting to english"
+    try:
+        langue = wx.Locale.GetLanguageInfo(wx.Locale.GetSystemLanguage()).CanonicalName[:2]
+        set_language(langue)
+    except:
+        print "Cannot find a translation for your language. Defaulting to english"
+        config["lang"] = "en"
 
 import os
 import os.path
@@ -30,7 +39,6 @@ except: pass
 
 import wx.aui as PyAUI
 from artubnotebook import ArtubNotebook
-from configmanager import config
 from resourceeditor import CEditorManager, AddResource
 import log
 from startuppage import StartupPage
