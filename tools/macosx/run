@@ -1,0 +1,9 @@
+#!/bin/sh
+
+execpath=`pwd`/`dirname $0`
+echo $execpath
+export DYLD_LIBRARY_PATH=$execpath/../Frameworks/Vorbis.framework/:$execpath/../Frameworks/SDL.framework/:$execpath/../Frameworks/Ogg.framework/:$execpath/../Frameworks/mikmod.framework/:$execpath/../Frameworks/ClanLib.framework/:$execpath/../Frameworks/libjpeg.framework/:$execpath/../Frameworks/libpng.framework/:$execpath/../Frameworks/ClanCore.framework/:$execpath/../Frameworks/ClanDisplay.framework/:$execpath/../Frameworks/ClanGL.framework/:$execpath/../Frameworks/ClanSignals.framework:$execpath/../Frameworks/ClanSound.framework/:$execpath/../Frameworks/ClanGUI.framework/:$execpath/../Frameworks/ClanSDL.framework/:$execpath/../Frameworks/ClanVorbis.framework/:$execpath/../Frameworks/ClanMikMod.framework/:$execpath/../Frameworks/ClanGUIStyleSilver.framework/:$execpath/../Resources/poujol/
+echo $DYLD_LIBRARY_PATH
+echo $execpath/../Frameworks/Python.framework/Versions/Current/bin/python2.5 $execpath/../Resources/artub.py
+# $execpath/../Frameworks/Python.framework/Versions/Current/bin/python2.5 $execpath/../Resources/artub.py
+$execpath/../Frameworks/Python.framework/Versions/Current/Resources/Python.app/Contents/MacOS/Python $execpath/../Resources/artub.py
