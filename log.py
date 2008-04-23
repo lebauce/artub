@@ -50,7 +50,7 @@ class ArtubLog(wx.PyLog):
 _log = ArtubLog()
 wx.Log_SetActiveTarget(_log)
 
-def set_text_ctrl(self, textCtrl):
+def set_text_ctrl(textCtrl):
     _log.tc = textCtrl
     _log.redirect_outputs()
 

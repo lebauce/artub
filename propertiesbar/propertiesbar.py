@@ -212,7 +212,8 @@ class PropertiesBar(wx.Panel):
             traceback.print_stack()
             self.Thaw()
             raise
-        self.Thaw()
+        try: self.Thaw()
+        except: pass # Because of a strange behaviour on Windows
         self.delprop.Enable(False)
         self.events.refreshSplitter()
         self.inspector.refreshSplitter()

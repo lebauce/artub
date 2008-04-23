@@ -83,11 +83,12 @@ class ToolbarManager:
                 tb.Show(True)
                 pane.Show(False)
             self.artub_frame._mgr.Update()
+            try: self.artub_frame.Thaw()
+            except: pass # Because of a strange behaviour on Windows
         except:
             raise
             self.artub_frame.Thaw()        
             return tb
-        self.artub_frame.Thaw()        
         return tb
 
     def remove_toolbar(self, toolbar):
