@@ -32,7 +32,11 @@ class ArtubLog(wx.PyLog):
 
     def DoLogString(self, message, timeStamp = None):
         if self.tc:
-            self.tc.AppendText(message)
+            message = message.strip()
+            if message:
+                self.tc.AppendText(message + "\n")
+        else:
+            print message
 
     def write(self, message):
        # print message
