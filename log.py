@@ -38,7 +38,8 @@ class ArtubLog(wx.PyLog):
             self.tc.AppendText(message)
 
     def write(self, message):
-        print message # wx.LogMessage(message)
+        # print message
+        wx.LogMessage(message)
 
     def redirect_outputs(self):
         self.oldstdout = sys.stdout
