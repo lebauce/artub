@@ -30,16 +30,14 @@ class ArtubLog(wx.PyLog):
         global _log
         _log = self
 
-    def DoLogString(self, message, timeStamp):
-        if self.logTime:
-            message = time.strftime("%Xl",
-                                    time.localtime(timeStamp)) + ": " + message
+    def DoLogString(self, message, timeStamp = None):
         if self.tc:
             self.tc.AppendText(message)
 
     def write(self, message):
-        # print message
-        wx.LogMessage(message)
+       # print message
+       # wx.LogMessage(message)
+       self.DoLogString(message)
 
     def redirect_outputs(self):
         self.oldstdout = sys.stdout
