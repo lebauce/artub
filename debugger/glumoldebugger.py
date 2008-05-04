@@ -672,12 +672,13 @@ class ProjectDebugger:
         file_lines_list = []
         
         listing += [
-          "import os\n" + \
-          "os.chdir(" + repr(self.project.project_path) + ")\n" + \
-          "import sys", \
-          "from stackless import *", \
+          "import os, sys" + \
+          # "from stackless import *", \
           "debug = True", \
-          "sys.path.insert(0, '" + join(os.getcwd(), "poujol").replace('\\', '\\\\') + "')" ]
+          "sys.path.insert(0, '" + os.getcwd().replace('\\', '\\\\') + "')",
+          "sys.path.insert(0, '" + join(os.getcwd(), "poujol").replace('\\', '\\\\') + "')",
+          "import _poujol", # This is needed for Windows because of DLL dependencies
+          "os.chdir(" + repr(self.project.project_path) + ")"]
           
         l = open(join("poujol", "__init__.py")).readlines()
         n = 0

@@ -1,1 +1,1 @@
-import artub
+execfile("artub.py")

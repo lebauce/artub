@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Glumol.  If not, see <http://www.gnu.org/licenses/>.
 
-from poujol import *
+from _poujol import *
 from Enum import Enum
 from stackless import *
 import time
