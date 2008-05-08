@@ -672,7 +672,7 @@ class ProjectDebugger:
         file_lines_list = []
         
         listing += [
-          "import os, sys" + \
+          "import os, sys", \
           # "from stackless import *", \
           "debug = True", \
           "sys.path.insert(0, '" + os.getcwd().replace('\\', '\\\\') + "')",

@@ -76,7 +76,7 @@ from glumolobject import CGlumolObject, VirtualGlumolObject
 from sound import CSound
 from animation import CAnimation, VirtualAnimation
 from inspect import getmembers, isclass
-from undoredo import undo_manager
+from undoredo import undo_manager, Action
 import pypoujol
 from stackless import tasklet, run, schedule
 from redistributable import Redistributable 

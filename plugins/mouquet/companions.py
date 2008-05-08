@@ -169,13 +169,17 @@ class MouquetFontCompanion(AdvancedCompanion):
         from sysfont import match_font
         return match_font(font.GetFaceName(), font.GetWeight() == wx.FONTWEIGHT_BOLD, font.GetStyle() == wx.FONTSTYLE_ITALIC)
 
-    def build_font_image(self, fontname, font, paletted = False):
+    def build_font_image(self, fontname, font, size, paletted = False):
         if paletted: mode = "P"
         else: mode = "RGBA"
         import Image, ImageDraw
-        img = Image.new(mode, font.getsize(self.obj.letters))
+        img = Image.new(mode, size)
         draw = ImageDraw.Draw(img)
-        draw.text((0, 0), self.obj.letters, font=font)
+        w = 0
+        for letter in self.obj.letters:
+            size = font.font.getabc(letter)
+            draw.text((w - font.getsize(" " + letter)[0] + font.getsize(letter)[0] - size[0], 0), " " + letter, font=font)
+            w += font.getsize(letter)[0]
         font_path = join(wx.GetApp().frame.project.project_path, "fonts")
         try: os.mkdir(font_path)
         except: pass
@@ -188,14 +192,21 @@ class MouquetFontCompanion(AdvancedCompanion):
             import ImageFont
             fontname = value.GetFaceName()
             filename = self.get_font_filename(value)
-            if filename[-4:].upper() in ('.TTF', '.OTF',) or filename[-6:].upper() == '.DFONT':
+            if not filename and wx.Platform == "__WXMAC__":
+                filename = "/Library/Fonts/" + fontname + "/rsrc"
+            if filename[-4:].upper() in ('.TTF', '.OTF',) or filename[-6:].upper() == '.DFONT' or filename.endswith("/rsrc"):
                 font = ImageFont.truetype(filename, value.GetPointSize())
             else:
                 font = ImageFont.load(filename, value.GetPointSize())
+            total_width = 0
+            max_height = 0
             for c in self.obj.letters:
-                sizes.append(font.getsize(c)[0])
+                size = font.getsize(c)
+                max_height = max(max_height, size[1])
+                total_width += size[0]
+                sizes.append(size[0])
             self.resource.sync()
-            self.build_font_image(fontname, font, False)
+            self.build_font_image(fontname, font, (total_width, max_height), False)
             PropertiesBarChangeValue(self.resource, self.obj, "font_face",
                                      (("widths", tuple(sizes)),
                                      ("filename", join("fonts", str(fontname) + '.png')),

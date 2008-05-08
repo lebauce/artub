@@ -60,26 +60,30 @@ class ChooseNameDialog(wx.Dialog):
         sizer.Fit(self)
         
         self.unique = unique
+        self.failed = False
                 
         wx.EVT_BUTTON(self, wx.ID_OK, self.on_ok)
         
     def on_ok(self, evt):
-        if self.unique and wx.GetApp().gns.getattr(get_full_name(self.name.GetValue()), None):
-            dlg = wx.MessageDialog(self, _("An object (") + get_full_name(self.name.GetValue()) + _(") already has this name"),
-            _("Please choose an other name"), wx.OK | wx.ICON_ERROR)
-            dlg.ShowModal()
-            evt.Cancel = True
-        else:
-            evt.Skip(True)
+        self.failed = self.unique and wx.GetApp().gns.getattr(get_full_name(self.name.GetValue()), None)
+        evt.Skip(True)
         
 def choose_a_name(name = _("New_object"), unique = True):
-    dlg = ChooseNameDialog(name, unique = unique)
-    dlg.Centre()
+    while True:
+        dlg = ChooseNameDialog(name, unique = unique)
+        dlg.Centre()
 
-    if dlg.ShowModal() != wx.ID_OK:
+        res = dlg.ShowModal()
+        name = dlg.name.GetValue()
         dlg.Destroy()
-        return ""
-
-    name = dlg.name.GetValue()
-    dlg.Destroy()
+        if res != wx.ID_OK and not dlg.failed:
+            return ""
+        if not dlg.failed:
+            break
+        else:
+            dlg2 = wx.MessageDialog(None, _("An object (") + get_full_name(dlg.name.GetValue()) + _(") already has this name"),
+            _("Please choose an other name"), wx.OK | wx.ICON_ERROR)
+            dlg2.ShowModal()
+            dlg2.Destroy()
+            
     return name.rstrip()
