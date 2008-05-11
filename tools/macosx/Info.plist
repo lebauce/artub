@@ -78,7 +78,7 @@
 	<key>PythonInfoDict</key>
 	<dict>
 		<key>PythonExecutable</key>
-		<string>/Library/Frameworks/Python.framework/Versions/2.5/Resources/Python.app/Contents/MacOS/Python</string>
+		<string>@executable_path/../Frameworks/Python.framework/Versions/2.5/Resources/Python.app/Contents/MacOS/Python</string>
 		<key>PythonLongVersion</key>
 		<string>2.5 Stackless 3.1b3 060516 (release25-maint:53571M, Jan 26 2007, 11:34:06) 
 [GCC 4.0.1 (Apple Computer, Inc. build 5367)]</string>

@@ -6,4 +6,4 @@ export DYLD_LIBRARY_PATH=$execpath/../Frameworks/Vorbis.framework/:$execpath/../
 echo $DYLD_LIBRARY_PATH
 echo $execpath/../Frameworks/Python.framework/Versions/Current/bin/python2.5 $execpath/../Resources/artub.py
 # $execpath/../Frameworks/Python.framework/Versions/Current/bin/python2.5 $execpath/../Resources/artub.py
-$execpath/../Frameworks/Python.framework/Versions/Current/Resources/Python.app/Contents/MacOS/Python $execpath/../Resources/artub.py
+$execpath/pythonw $execpath/../Resources/artub.py

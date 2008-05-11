@@ -19,6 +19,7 @@
 import Image
 from os.path import join, basename, isabs
 from screen import get_screen
+import numpy.numarray
 from OpenGL.GL import glTexParameteri, glGenTextures, GL_TEXTURE_2D, \
                       GL_TEXTURE_MAG_FILTER, GL_LINEAR, GL_TEXTURE_MIN_FILTER, \
                       GL_LINEAR_MIPMAP_NEAREST, GL_RGB, GL_RGBA, GL_UNSIGNED_BYTE, \
