@@ -25,7 +25,7 @@ Usage:
 
 from setuptools import setup
 
-APP = ['Artub.py']
+APP = ['Artub.pyw']
 DATA_FILES = []
 OPTIONS = {'argv_emulation' : True, 'iconfile' : 'images/Artub.icns'}
 

@@ -55,7 +55,11 @@ class ModifiedInterpreter(InteractiveInterpreter):
 
     def spawn_subprocess(self):
         args = self.subprocess_arglist
-        self.rpcpid = os.spawnv(os.P_NOWAIT, sys.executable, args)
+        if wx.Platform == '__WXMAC__':
+            exc = sys.executable + "w"
+        else:
+            exc = sys.executable
+        self.rpcpid = os.spawnv(os.P_NOWAIT, exc, args)
 
     def build_subprocess_arglist(self):
         w = ['-W' + s for s in sys.warnoptions]

@@ -28,6 +28,7 @@ class StartupPageBase:
         self.url_handlers = { "new_project" : artub_frame.on_new, \
                               "open_project" : artub_frame.on_open, \
                               "import_template" : self.show_templates_page }
+        self.dyn_path = os.path.join(wx.GetApp().artub_path, 'startup', 'dynamic.html')
     
     def get_history_string(self):
         s = ''
@@ -116,7 +117,7 @@ class StartupPageBase:
             print "<p>&nbsp;</p>"
             self.footer()
             s = self.restore_outputs().encode('iso-8859-1')
-            open(os.path.join(wx.GetApp().artub_path, 'startup', 'dynamic.html'), 'w').write(s)
+            open(self.dynpath, 'w').write(s)
         except:
             raise
             self.restore_outputs()
@@ -174,7 +175,7 @@ if wx.Platform == '__WXMSW__':
                 
 
         def OnDocumentComplete(self, evt):
-            print "OnDocumentComplete", self.must_go_back, evt.URL
+            # print "OnDocumentComplete", self.must_go_back, evt.URL
             if self.must_go_back:
                 self.must_go_back = False
                 self.ignore_before_navigate = True
@@ -372,15 +373,14 @@ else:
   
         def show_templates_page(self, evt = None):
             self.update_template_page()
-            dyn_path = join(wx.GetApp().artub_path, 'startup', 'dynamic.html')
-            templates = open(dyn_path).read()
-            open(dyn_path, "w").write(
+            templates = open(self.dyn_path).read()
+            open(self.dyn_path, "w").write(
                 open(platform.startup_path).read().replace(
                     '<templates>',
                     templates
                 )
             )
-            self.load_page(dyn_path)
+            self.load_page(self.dyn_path)
             self.show()
 
         def header(self):
@@ -425,13 +425,12 @@ else:
         def show_templates_page(self, evt = None):
             self.update_template_page()
             startup_path = join(wx.GetApp().artub_path, 'startup')
-            dyn_path = join(startup_path, 'dynamic.html')
-            templates = open(dyn_path).read()
-            open(dyn_path, "w").write(
+            templates = open(self.dyn_path).read()
+            open(self.dyn_path, "w").write(
                 open(platform.index_templates_path).read().replace(
                     '<templates>',
                     templates
                 )
             )
-            self.load_page(dyn_path)
+            self.load_page(self.dyn_path)
             self.show()
