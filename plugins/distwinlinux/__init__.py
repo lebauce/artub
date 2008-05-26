@@ -48,7 +48,8 @@ class Builder(CRedistributablePlugin):
                 print "cmd", "python " + script + largs
                 os.system("stackless " + script + largs)
             else:
-                os.system(script + largs)
+                print "..\\..\\python.exe " + script + largs
+                os.system("..\\..\\python.exe " + script + largs)
         else:
             os.system(script + largs)
         os.chdir(path)
@@ -125,10 +126,10 @@ VSVersionInfo(
                              'debug' : project.debug, \
                              'noconsole' : not project.use_console, \
                              'strip' : False, \
-                             'out' : build_path, \
+                             'out' : '"' + build_path + '"', \
                              'icon' : project.icon, \
-                             'version' : version_file, \
-                             'paths=' : paths, \
+                             'version' : '"' + version_file + '"', \
+                             'paths=' : '"' + paths + '"', \
                              'name' : replace(project.name, ' ', '') }
 
         specpath = os.path.join(build_path, str(self.project.name) + '.spec')
@@ -150,7 +151,7 @@ VSVersionInfo(
         scriptfile.write(open(os.path.join('builder', 'prelude.py')).read())
         scriptfile.write(listing)
         scriptfile.write(open(os.path.join('builder', 'prologue_release.py')).read())
-        args.append(str(p))
+        args.append('"' + str(p) + '"')
         print "Running Makespec.py"
         self.run('Makespec.py', args, makespec_options)
         return specpath
@@ -165,7 +166,7 @@ VSVersionInfo(
             self.run('Configure.py', [ ], { })
         makespec = self.generate_makespec()
         print "Running Build.py"
-        self.run('Build.py', [ makespec ], { })
+        self.run('Build.py', [ '"' + makespec + '"' ], { })
         build_path = os.path.join(self.project.project_path, "build")
         import shutil
         if os.name == 'nt':
