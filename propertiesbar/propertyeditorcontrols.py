@@ -587,6 +587,7 @@ class AnimationIEC(InspectorEditorControl):
         self.cal = AnimationPanel(self.win, self, (0,0))
         self.cal.resource = self.resource
         
+        if value == "NoneType": value = "None"
         self.editorCtrl.SetValue(value)
         self.editorCtrl.SetPopupContent(self.win)
         InspectorEditorControl.createControl(self)

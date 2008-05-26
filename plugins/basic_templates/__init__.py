@@ -434,7 +434,7 @@ class CanTurnTemplate(AutoTemplate):
 """
 
 class CameraFollowTemplate(AutoTemplate):
-    name = _("Camera follow")
+    name = "Camera follow"
     description = _("Make the camera follow a character or an object")
     section = "Behaviours/Scenes"
     resource_name = "CameraFollow"

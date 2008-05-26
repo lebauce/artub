@@ -29,7 +29,7 @@ import wx
 class BasicGameDialog(wx.Dialog):
     def __init__(
             self, parent = None, ID = -1, title = _("More informations are needed"), size=wx.DefaultSize, pos=wx.DefaultPosition, 
-            style=wx.DEFAULT_DIALOG_STYLE
+            style=wx.DEFAULT_DIALOG_STYLE   
             ):
 
         pre = wx.PreDialog()

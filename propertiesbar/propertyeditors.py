@@ -88,10 +88,12 @@ class PropertyWrapper:
 
     def setValue(self, value):
         if type(value) != type(self.value):
-            if type(self.value) == str:
+            if type(value) == str:
                 self.value = unicode(value)
                 return
-            elif type(self.value) == unicode:
+            elif type(value) == unicode:
+                self.value = value
+            elif value == None:
                 self.value = value
             else:
                 raise "Value must be of type " + str(type(self.value)) + " Had" + str(type(value)) + "instead."
@@ -653,6 +655,7 @@ class AnimationPropEdit(FactoryPropEdit):
         self.editorCtrl.createControl(self.parent, get_parent_class(self.value.__class__), self.idx, self.width)
         
     def getDisplayValue(self):
+        if self.value == None: return "None"
         try: return self.value.__class__.__name__
         except: return self.value.__name__
         
@@ -664,7 +667,9 @@ class AnimationPropEdit(FactoryPropEdit):
                 wx.LogError('Invalid value: %s' % str(mess))
                 raise
             if value == "None":
-                return "None"
+                value = "NoImage"
+                # self.value = None
+                # return "NoImage"
             self.value = wx.GetApp().gns.eval(value + '()')
             return value
         return ""

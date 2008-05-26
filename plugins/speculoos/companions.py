@@ -38,7 +38,7 @@ class BasicSpeculoosCompanion(Companion):
     def change_value(self, name, value):
         if isinstance(getattr(self.obj, name), pypoujol.Animation):
             parent_class = pypoujol.get_parent_class(value.__class__)
-            self.obj.size = value.size
+            if value: self.obj.size = value.size
             wx.GetApp().artub_frame.active_editor.select_sprite(self.obj)
             PropertiesBarChangeValue(self.resource, self.obj, name, value,
                                      lambda v: pypoujol.get_parent_class(value.__class__) + '()',
