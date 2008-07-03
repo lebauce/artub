@@ -117,7 +117,7 @@ class Monkey2InterfaceTemplate(Template):
         self.action = self.default_action 
         
     def __glumolinit__(self):
-        self.position = (0,400) 
+        self.position = (0,game.height - 84) 
         self.open_button = Interface.open_buttonObject(self) 
         self.size = (234,84) 
         self.close_button = Interface.close_buttonObject(self) 
@@ -345,7 +345,7 @@ class Monkey2InterfaceTemplate(Template):
                 
             
         def on_after_draw(self):
-            draw_text(self.text, (self.position.x, 380), (300, 300), self.Color)
+            draw_text(self.text, (self.position.x, game.height - 100), (300, 300), self.Color)
             self.visible = True 
             
         def __glumolinit__(self):

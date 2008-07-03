@@ -128,10 +128,10 @@ class TextCtrlIEC(InspectorEditorControl):
         
         # Ugly hack. It doesn't get focus the very first time
         if TextCtrlIEC.ugly_hack:
-            wx.GetApp().frame.pb.Freeze()
+            if wx.Platform != "__WXMSW__": wx.GetApp().frame.pb.Freeze()
             wx.GetApp().frame.pb.nb.SetSelection(1)
             wx.GetApp().frame.pb.nb.SetSelection(0)
-            wx.GetApp().frame.pb.Thaw()
+            if wx.Platform != "__WXMSW__": wx.GetApp().frame.pb.Thaw()
             TextCtrlIEC.ugly_hack = False
             
     def getValue(self):
