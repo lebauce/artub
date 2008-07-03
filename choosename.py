@@ -38,9 +38,9 @@ class ChooseNameDialog(wx.Dialog):
         self.text = wx.StaticText(self, -1, _("Name"))
         sizer2.Add(self.text, 0, wx.ALIGN_CENTRE | wx.ALL, 5)
         
-        self.name = IdentifierCtrl(self, -1, "", size = (200, 20))
+        self.name = IdentifierCtrl(self, -1, name, size = (200, 20))
         sizer2.Add(self.name, 1,  wx.ALIGN_CENTRE | wx.ALL, 5)
-        self.name.SetValue(name)
+        #self.name.SetValue(name)
         self.name.SetSelection(-1, -1)
         
         sizer.Add(sizer2, 0, wx.GROW|wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5)

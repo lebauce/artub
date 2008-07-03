@@ -24,7 +24,7 @@ class IdentifierCtrl(masked.TextCtrl):
     def __init__(self, parent = None, id = -1, value = "", pos = wx.DefaultPosition, 
                  size = wx.DefaultSize, style = 0, validator = wx.DefaultValidator,
                  name = wx.TextCtrlNameStr):
-        masked.TextCtrl.__init__(self, parent, id, value,
+        masked.TextCtrl.__init__(self, parent, id,
                                  mask         = "CN{31}", # "C{1}N{63}",
                                  excludeChars = " ",
                                  formatcodes  = "F_",
@@ -35,11 +35,11 @@ class IdentifierCtrl(masked.TextCtrl):
                                  choices      = '',
                                  validRequired = True,
                                  choiceRequired = True,
-                                 defaultValue = '',
                                  demo         = True,
                                  name         = 'identifier',
                                  stopFieldChangeIfInvalid = True,
-                                 useFixedWidthFont = False)
+                                 useFixedWidthFont = False,
+                                 defaultValue=value)
                                  
     def GetValue(self):
         return masked.TextCtrl.GetValue(self).strip()
