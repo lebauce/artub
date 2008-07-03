@@ -99,6 +99,8 @@ class SpeculoosEditableListBox(EditableListBox):
                 return
 
         if not self.creating:
+            if evt.IsEditCancelled():
+                return
             artub = self.speculoos.artub
             ind = liste.GetNextItem(-1, state = wx.LIST_STATE_SELECTED)
             name = liste.GetItemText(ind)
@@ -127,6 +129,7 @@ class SpeculoosEditableListBox(EditableListBox):
             self.newpoint.Enable()
             self.delpoint.Enable()
             self.edit_boxsystem(bxsystem)
+
         evt.Skip()
 
     def on_delete_boxsystem(self, evt):
@@ -274,6 +277,8 @@ class SpeculoosEditableListBox(EditableListBox):
         self.newpoint.Enable()
         self.delpoint.Enable()
         self.edit_boxsystem(bxsystem)
+        self.m_listCtrl.SetItemState(self.m_listCtrl.GetItemCount() - 1,
+                                     wx.LIST_STATE_SELECTED, wx.LIST_STATE_SELECTED)
 
     def OnItemSelected(self, event):
         self.m_selection = event.GetIndex()

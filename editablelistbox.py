@@ -209,6 +209,7 @@ class EditableListBox(wx.Panel):
     def OnEndLabelEdit(self, event):
         if event.GetText():
             self.m_listCtrl.SetItemImage(event.GetIndex(), 0)
+
         if event.GetIndex() == self.m_listCtrl.GetItemCount() - 1 and (event.GetText() or self.m_listCtrl.GetItemText(event.GetIndex())):
             self.m_listCtrl.InsertStringItem(self.m_listCtrl.GetItemCount(), u"")
 
