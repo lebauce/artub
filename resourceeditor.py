@@ -376,6 +376,8 @@ class CEditorManager:
             if i: menu.Append(id, i)
             else: menu.AppendSeparator()
             id += 1
+            wx.NewId()
+
         parent_menu.Bind(wx.EVT_MENU_RANGE, menu.on_select_template, None, _id, id)
         return menu
         

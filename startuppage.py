@@ -117,7 +117,7 @@ class StartupPageBase:
             print "<p>&nbsp;</p>"
             self.footer()
             s = self.restore_outputs().encode('iso-8859-1')
-            open(self.dynpath, 'w').write(s)
+            open(self.dyn_path, 'w').write(s)
         except:
             raise
             self.restore_outputs()

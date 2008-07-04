@@ -157,6 +157,7 @@ class Sprite(object):
         self.color = (255, 255, 255, 255)
         self.regions = []
         self.track_position = False
+        self.transparent = False
         if parent == None:
             if get_game(): get_game().screen.children.append(self)
         else:

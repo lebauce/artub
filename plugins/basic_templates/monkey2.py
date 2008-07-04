@@ -115,6 +115,7 @@ class Monkey2InterfaceTemplate(Template):
         self.__glumolinit__()
         self.default_action = 'Walk to' 
         self.action = self.default_action 
+        self.obj = None
         
     def __glumolinit__(self):
         self.position = (0,game.height - 84) 
@@ -335,6 +336,7 @@ class Monkey2InterfaceTemplate(Template):
             self.set_boxes()
             self.text = '' 
             self.Color = Color(255, 255, 255, 255) 
+            self.transparent = True
             
         def update_text(self):
             if self.parent.obj:
@@ -345,7 +347,7 @@ class Monkey2InterfaceTemplate(Template):
                 
             
         def on_after_draw(self):
-            draw_text(self.text, (self.position.x, game.height - 100), (300, 300), self.Color)
+            draw_text(self.text, (self.position.x, game.height - 108), (300, 300), self.Color)
             self.visible = True 
             
         def __glumolinit__(self):

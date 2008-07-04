@@ -411,19 +411,19 @@ class Akiki(CResourceEditor):
         new.AppendMenu(wx.NewId(), "New scene",
                     artub.get_templates_menu(
                     callback = self.artub.on_new_class,
-                    section = "Scene", prefix = ""))
+                    section = "Scene", prefix = "", parent_menu = menu, id = wx.NewId()))
         new.AppendMenu(wx.NewId(), "New sprite",
                 artub.get_templates_menu(
                 callback = self.artub.on_new_class,
-                section = "Sprite", prefix = ""))
+                section = "Sprite", prefix = "", parent_menu = menu, id = wx.NewId()))
         new.Append(artub.new_anim_id, _("New animation"), _("New animation"))
-        wx.EVT_MENU(new, artub.new_anim_id, artub.on_new_animation)
+        wx.EVT_MENU(menu, artub.new_anim_id, artub.on_new_animation)
         new.Append(artub.new_font_id, _("New font"), _("New font"))
-        wx.EVT_MENU(new, artub.new_font_id, artub.on_new_font)
+        wx.EVT_MENU(menu, artub.new_font_id, artub.on_new_font)
         new.Append(artub.new_script_id, _("New script"), _("New script"))
-        wx.EVT_MENU(new, artub.new_script_id, artub.on_new_script)
+        wx.EVT_MENU(menu, artub.new_script_id, artub.on_new_script)
         new.Append(artub.new_dialog_id, _("New dialog"), _("New dialog"))
-        wx.EVT_MENU(new, artub.new_dialog_id, artub.on_new_dialog)
+        wx.EVT_MENU(menu, artub.new_dialog_id, artub.on_new_dialog)
         menu.AppendMenu(-1, "New", new) 
         menu.Append(artub.propID, _("Properties"), _("Properties"))
         

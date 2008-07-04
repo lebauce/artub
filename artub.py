@@ -96,7 +96,7 @@ class ArtubTree(wx.TreeCtrl):
         tID = wx.NewId()
         wx.TreeCtrl.__init__(self, parent, tID, style = style)
         wx.EVT_TREE_SEL_CHANGED(self, tID, self.on_sel_changed)
-        wx.EVT_RIGHT_UP(self, self.on_default_right_up)
+        wx.EVT_RIGHT_DOWN(self, self.on_default_right_up)
         wx.EVT_KEY_DOWN(self, self.on_key_down)
         wx.EVT_TREE_END_LABEL_EDIT(self, tID, self.on_tree_end_label_edit) # Crash on my Windows
         
