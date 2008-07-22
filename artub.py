@@ -21,40 +21,82 @@
 
 __version__ = "1.0"
 
-from depplatform import get_image_path, set_sys_path
-set_sys_path()
-from configmanager import config
-
-print "Running Artub version", __version__
-import gettext
-gettext.install('artub', 'locale', unicode=1)
-import locale
 import wx
-print "Using wxPython", wx.VERSION_STRING
-
-def set_language(lang):
-    gettext.translation('artub', 'locale', languages=[lang]).install(unicode=1)
-    config["lang"] = lang
-    
-try:
-    langue = config["lang"]
-    set_language(langue)
-except:
-    try:
-        langue = wx.Locale.GetLanguageInfo(wx.Locale.GetSystemLanguage()).CanonicalName[:2]
-        set_language(langue)
-    except:
-        print "Cannot find a translation for your language. Defaulting to english"
-        config["lang"] = "en"
-
 import os
+from depplatform import get_image_path, set_sys_path
+
+class ArtubApp(wx.App):
+    def __init__(self):
+        wx.App.__init__(self, False)
+        
+        set_sys_path()
+        from configmanager import config
+
+        print "Running Artub version", __version__
+        print "Using wxPython", wx.VERSION_STRING
+        
+        self.config = config
+
+        self.setup_language()
+
+        self.artub_path = os.path.dirname(os.path.abspath(__file__))
+        try: os.chdir(os.path.dirname(__file__))
+        except: pass
+        
+        self.create_main_namespace()
+
+    def setup_language(self):
+        import locale
+        import gettext
+        gettext.install('artub', 'locale', unicode=1)
+
+        try:
+            langue = config["lang"]
+            gettext.translation('artub', 'locale', languages=[langue]).install(unicode=1)
+            self.config["lang"] = langue
+        except:
+            try:
+                langue = wx.Locale.GetLanguageInfo(wx.Locale.GetSystemLanguage()).CanonicalName[:2]
+                set_language(langue)
+            except:
+                print "Cannot find a translation for your language. Defaulting to english"
+                self.config["lang"] = "en"
+                
+    def create_main_namespace(self):
+        from glumolnamespace import GlumolNamespace
+        self.gns = GlumolNamespace()
+        
+    def ExitMainLoop(self):
+        self.mainloop_running = False
+
+    def OnInit(self):
+        return True
+
+    def MainLoop(self):
+        ArtubFrame(None, -1, _("Artub"), self.config)
+
+        evtloop = wx.EventLoop()
+        old = wx.EventLoop.GetActive()
+        wx.EventLoop.SetActive(evtloop)
+        self.mainloop_running = True
+        while self.mainloop_running:
+            schedule()
+
+            while evtloop.Pending():
+                evtloop.Dispatch()
+
+            self.ProcessIdle()
+            time.sleep(0.01)
+
+        wx.EventLoop.SetActive(old)
+        wx.App.__init__(self, False)
+
+app = ArtubApp()
+
 import os.path
 import sys
 import time
-
-try: os.chdir(os.path.dirname(__file__))
-except: pass
-
+from configmanager import config
 import wx.aui as PyAUI
 from artubnotebook import ArtubNotebook
 from resourceeditor import CEditorManager, AddResource
@@ -233,7 +275,6 @@ class TemplatesTree(ArtubTree):
                         item = self.AppendItem(item, b[0].__name__)
                     add_template_aux(item, b[1])
         import inspect
-        bases = inspect.getclasstree([c])
         l = popo(c)
         for i in l:
             self.SetPyData(i, resource)
@@ -439,7 +480,7 @@ class ArtubFrame(wx.Frame, CEditorManager):
         self.cwd = os.getcwd()
         sys.path.append(self.cwd)
         self.window = None
-        self.config = config
+        self.config = config.config
         self.context = None
         self.todos = []
         
@@ -1413,42 +1454,8 @@ class ArtubFrame(wx.Frame, CEditorManager):
         self.sync()
         self.debugger.run()
 
-class ArtubApp(wx.App):
-    def __init__(self):
-        self.config = config.config
-        self.artub_path = os.path.dirname(os.path.abspath(__file__))
-        from glumolnamespace import GlumolNamespace
-        self.gns = GlumolNamespace()
-        wx.App.__init__(self, False)
+app.MainLoop()
 
-    def ExitMainLoop(self):
-        self.mainloop_running = False
-
-    def OnInit(self):
-        ArtubFrame(None, -1, _("Artub"), self.config)
-        return True
-
-    def MainLoop(self):
-        evtloop = wx.EventLoop()
-        old = wx.EventLoop.GetActive()
-        wx.EventLoop.SetActive(evtloop)
-        self.mainloop_running = True
-        while self.mainloop_running:
-            schedule()
-
-            while evtloop.Pending():
-                evtloop.Dispatch()
-
-            self.ProcessIdle()
-            time.sleep(0.01)
-
-        wx.EventLoop.SetActive(old)
-
-def main():
-    app = ArtubApp()
-    app.MainLoop()
-
-main()
 #task = tasklet(main)()
 #task.insert()
 #run()
