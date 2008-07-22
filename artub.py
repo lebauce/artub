@@ -21,15 +21,16 @@
 
 __version__ = "1.0"
 
-import wx
-import os
 from depplatform import get_image_path, set_sys_path
+set_sys_path()
+
+import os
+import wx
 
 class ArtubApp(wx.App):
     def __init__(self):
         wx.App.__init__(self, False)
         
-        set_sys_path()
         from configmanager import config
 
         print "Running Artub version", __version__
