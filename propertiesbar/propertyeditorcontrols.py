@@ -459,36 +459,28 @@ class AnimationPanel(wx.Panel):
             filename = project.ask_to_import(newanimdlg.filename.GetValue())
             
             if filename.endswith('.psd'):
-                from PythonMagick import Image
-                img = Image(str(filename))
+                import PIL.Image
+                img = PIL.Image.open(str(filename))
                 base = str(filename[:-4]) + '.png'
                 import tempfile
-                import os.path
-                import os
                 import exceptions
-                import glob
+                import shutil
                 
                 tempdir = tempfile.gettempdir()
-                infos = img.get_layer_names()
-                infos = infos.split('\n')
-                layers = []
-                for i in infos:
-                    n, x, y = i.split('|')
-                    x = int(x)
-                    y = int(y)
-                    layers.append((n, x, y))
                 tempdir = tempdir + '/psd_outputs'
-                try: os.mkdir(tempdir)
-                except exceptions.OSError: 
-                    for i in glob.glob(tempdir + '/*'):
-                        os.remove(i)
+                shutil.rmtree(tempdir, ignore_errors=True)
                 
-                img.write_files(tempdir + '/' + os.path.basename(base))
+                try: os.mkdir(tempdir)
+                except: pass
+                                
+                for index, layer in enumerate(img.layers):
+	                img.seek(index)
+	                img.save(join(tempdir, os.path.basename(base) + "_" + layer[0].decode('utf-8') + ".png"))
+	            
                 dlg = ib.ImageDialog(self, tempdir)
                 dlg.Centre() 
 
                 if dlg.ShowModal() == wx.ID_OK:
-                    import shutil
                     filename = wx.GetApp().frame.project.project_path + '/' + os.path.basename(dlg.GetFile())
                     shutil.copyfile(dlg.GetFile(), filename)
                     
@@ -497,22 +489,18 @@ class AnimationPanel(wx.Panel):
                     newanimdlg.Destroy()
                     return
 
-                for i in glob.glob(tempdir + '/*'):
-                    os.remove(i)
-                os.rmdir(tempdir)
+                shutil.rmtree(tempdir, ignore_errors=True)
             
-            filename = filename.replace('\\', '\\\\')
             nom = get_parent_class(self.iec.resource.__class__)
             classe = res.get_class(nom)
             c = classe.add_class(name, ["Animation"], [
-                           "filenames = [u'" + filename + "']\n"])
+                           "filenames = [" + repr(filename) + "]\n"])
             res.ast_has_changed = True
             res.topy()
             wx.GetApp().gns.run(res.listing)
             wx.GetApp().artub_frame.update_treeitem(res)
             self.iec.editorCtrl.SetValue(nom + '.' + name)
-            import os
-            if os.name != "posix":
+            if os.name != "posix": # Hack
                 self.iec.editorCtrl.PopDown()
             self.iec.propEditor.inspectorPost(False)
             
@@ -587,7 +575,6 @@ class AnimationIEC(InspectorEditorControl):
         self.cal = AnimationPanel(self.win, self, (0,0))
         self.cal.resource = self.resource
         
-        if value == "NoneType": value = "None"
         self.editorCtrl.SetValue(value)
         self.editorCtrl.SetPopupContent(self.win)
         InspectorEditorControl.createControl(self)
