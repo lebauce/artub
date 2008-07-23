@@ -1,3 +1,20 @@
-export DYLD_LIBRARY_PATH=/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/ClanLib.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/libjpeg.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/libpng.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/ClanCore.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/ClanDisplay.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/ClanGL.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/:/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/ClanSound.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/ClanGUI.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/ClanSDL.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/ClanVorbis.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/ClanMikMod.framework/:/Users/boblebauce/dev/ClanLib-0.8.0/build/Development/ClanGUIStyleSilver.framework/:/Users/boblebauce/dev/poujol/
-
-# install_name_tool -change libboost_python.dylib /Users/boblebauce/dev/poujol/libboost_python.dylib /Users/boblebauce/dev/artub/poujol/poujol.so
+CLANLIB_PATH=/Users/boblebauce/dev/ClanLib-0.8.1
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanLib.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanApp.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanCore.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanDisplay.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanGL.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanGUI.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanGUIStyleSilver.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanMikMod.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanNetwork.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanSDL.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanSignals.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanSound.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanVorbis.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/Frameworks/libjpeg.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/Frameworks/libpng.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/Frameworks/Ogg.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/Frameworks/SDL.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/Frameworks/Vorbis.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/Frameworks/mikmod.framework/
