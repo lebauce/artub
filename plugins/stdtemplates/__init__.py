@@ -128,23 +128,34 @@ class StdTemplates(CPlugin):
             scene_name = make_class_name(dlg.scene_name.GetValue())
             dlg.Destroy()
             
+            dlg = wx.MessageDialog(wx.GetApp().frame,
+                            _("Do you want the default images to be copied into your project's folder ?"),
+                            _("Copy image into project's folder"),
+                            wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION)
+            import_files = dlg.ShowModal() == wx.ID_YES
+            dlg.Destroy()
+            
             from string import Template
             proj.listing = Template(open(join("plugins", "stdtemplates", "empty_game.tpl")).read()) \
                                .substitute(name=name, first_scene=scene_name,
                                            images_path=repr(join(wx.GetApp().artub_path, "images") + os.sep)[1:-1])
             if templ_name == "Curse of Monkey Island style":
                 t = ( "Pickable", "Assemble with", "Do something periodically", "CMI & Fullthrottle like interface", \
-                      "Door template", "Automatic door template", "Scaling zone", "Light zone", \
+                      # "Automatic door template", "Scaling zone", "Light zone"
+                      "Door template", \
                       "Can walk", "Can talk", "Can turn", "Basic character", "Chain animations", \
                       "Camera follow", "A character", ("Main character", (ego_name,)), \
-                      "A basic scene", "WithMusic", "Roll over", "Text" )
+                      "A basic scene", "WithMusic", "Roll over", "Text", "An inventory" )
             else:
                 t = ( "Pickable", "Assemble with", "Do something periodically", "Verb interface", \
-                      "Door template", "Automatic door template", "Scaling zone", "Light zone", \
+                      # "Automatic door template", "Scaling zone", "Light zone"
+                      "Door template", \
                       "Can walk", "Can talk", "Can turn", "Basic character", "Chain animations", \
                       "Camera follow", "A character", ("Main character", (ego_name,)), \
-                      "A basic scene", "WithMusic", "Roll over", "Text" )
+                      "A basic scene", "WithMusic", "Roll over", "Text", "An inventory" )
                 
+            kw = { "subst" : { "images_path" : repr(join(wx.GetApp().artub_path, "images") + os.sep)[1:-1] },
+                   "import_data" : import_files }
             tl = wx.GetApp().artub_frame.get_template_list()
             for j in t:
                 f = False
@@ -154,7 +165,7 @@ class StdTemplates(CPlugin):
                     args = (None,)
                 for i in tl:
                     if i[1].name == j:
-                        i[1].do(*args)
+                        i[1].do(*args, **kw)
                         f = True
                 if not f:
                     raise "Cannot find " + j
