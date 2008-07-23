@@ -145,48 +145,36 @@ class BasicSceneTemplate(AutoTemplate):
 
 """
 
-class AutomaticDoorTemplate(Template):
+class AutomaticDoorTemplate(AutoTemplate):
     name = "Automatic door template"
     description = "Automatic door"
     section = "Object/Door"
     # html_page = "audoor.html"
     
-    def do(self, evt):
-        pass
-
-class FollowingCharacter(Template):
+class FollowingCharacter(AutoTemplate):
     name = "A following character"
     description = "A character that follows the main character"
     section = "Characters"
     html_page = "following_ego.html"
     
-    def do(self, evt):
+    def do2(self, evt):
         print "FollowingCharacter DO"
         evt.Cancel = False
 
-class ScaleZoneTemplate(Template):
+class ScaleZoneTemplate(AutoTemplate):
     name = "Scaling zone"
     description = "An area that will scale the object inside."
     section = "Zones"
 
-    def do(self, evt):
-        pass
-
-class LightZoneTemplate(Template):
+class LightZoneTemplate(AutoTemplate):
     name = "Light zone"
     description = "The object inside this area will appear like it was under a colored light."
     section = "Zones"
 
-    def do(self, evt):
-        pass
-
-class SamnmaxInterfaceTemplate(Template):
+class SamnmaxInterfaceTemplate(AutoTemplate):
     name = "Samnmax interface"
     description = "The Samnmax interface"
     section = "Interfaces"
-
-    def do(self, evt):
-        pass
 
 class PickableTemplate(AutoTemplate):
     name = "Pickable"
@@ -222,8 +210,8 @@ class AssembleWithTemplate(AutoTemplate):
     listing = """class AssembleWith(Behaviour):
     apply_on = "Object"
     def __init__(self):
-        self.with_object = None # Scene1.Brosse
-        self.result_object = None # BalaisBrosse
+        self.with_object = None
+        self.result_object = None
         self.add_to_inventory = True
         
     def on_result(self):

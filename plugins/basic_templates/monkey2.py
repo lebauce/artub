@@ -27,7 +27,7 @@ class Monkey2InterfaceTemplate(Template):
     description = "Interface like many adventure games (Monkey Island I & II, Dott, ...)."
     section = "Interfaces"
 
-    def do(self, evt):
+    def do(self, evt, **args):
         project = self.artub.project
 
         resource = CGlumolObject(project)
@@ -329,9 +329,9 @@ class Monkey2InterfaceTemplate(Template):
                 
             
         
-    class textzoneObject(Object):
+    class textzoneObject(Sprite):
         def __init__(self, parent):
-            Object.__init__(self, parent)
+            Sprite.__init__(self, parent)
             self.__glumolinit__()
             self.set_boxes()
             self.text = '' 
@@ -348,7 +348,6 @@ class Monkey2InterfaceTemplate(Template):
             
         def on_after_draw(self):
             draw_text(self.text, (self.position.x, game.height - 108), (300, 300), self.Color)
-            self.visible = True 
             
         def __glumolinit__(self):
             self.to_scene = None 
