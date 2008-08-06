@@ -1,17 +1,19 @@
+%define svn_revision r247
+
 Name:           psdparse
-Version:        1.0
-Release:        1%{?dist}
+Version:        0.1
+Release:        1.0.svn%{svn_revision}%{?dist}
 Summary:        PSD file parser
 
 Group:          System Environment/Libraries
-License:        GPL
+License:        GPLv2
 URL:            http://www.telegraphics.com.au/sw/#psdparse
-Source0:        psdparse-1.0.tar.gz
-Patch0:		psdparse-locale.patch
+Source0:        psdparse-r247.tar.gz
+Patch0:         psdparse-locale.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  libpng-devel glibc-headers
-Requires:       libpng glibc
+Requires:       glibc
 
 %description
 This utility parses and prints a description of various structures
@@ -49,3 +51,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/psdparse
 
 %changelog
+* Wed Aug 6 2008 Sylvain Baubeau <bob@glumol.com> 0.1-1.0.svnr247
+- Initial packaging for Fedora
