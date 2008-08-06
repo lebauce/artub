@@ -1,0 +1,56 @@
+diff -u -r psdparse.old/main.c psdparse.new/main.c
+--- psdparse.old/main.c	2008-08-06 07:46:26.312495722 +0900
++++ psdparse.new/main.c	2008-08-06 08:13:51.288745148 +0900
+@@ -31,7 +31,7 @@
+ char *pngdir = indir;
+ int verbose = DEFAULT_VERBOSE, quiet = 0, rsrc = 0, extra = 0,
+ 	makedirs = 0, numbered = 0, help = 0, split = 0, xmlout = 0;
+-locale_t utf_locale = NULL;
++__locale_t utf_locale = NULL;
+ long hres, vres; // we don't use these, but they're set within doresources()
+ 
+ #ifdef ALWAYS_WRITE_PNG
+diff -u -r psdparse.old/psd.c psdparse.new/psd.c
+--- psdparse.old/psd.c	2008-08-06 07:46:26.312495722 +0900
++++ psdparse.new/psd.c	2008-08-06 08:14:18.923513673 +0900
+@@ -287,7 +287,7 @@
+ 
+ 			if(listfile) fprintf(listfile, "-- PSD file: %s\n", psdpath);
+ 			if(xml){
+-				if(utf_locale) fputwc_l(0xFEFF, xml, utf_locale); // Byte Order Mark
++				if(utf_locale) fputwc(0xFEFF, xml); // Byte Order Mark
+ 				fputs("<?xml version=\"1.0\"?>\n", xml);
+ 				fputs("<PSD FILE='", xml);
+ 				fputsxml(psdpath, xml);
+diff -u -r psdparse.old/psdparse.h psdparse.new/psdparse.h
+--- psdparse.old/psdparse.h	2008-08-06 07:46:26.313495221 +0900
++++ psdparse.new/psdparse.h	2008-08-06 08:13:51.288745148 +0900
+@@ -30,6 +30,7 @@
+ 	#include <unistd.h>
+ 	#include <wchar.h>
+ 	#include <xlocale.h> // TODO: make this dependent on configure #define
++	#include <locale.h>
+ #endif
+ 
+ #ifdef PSBSUPPORT
+@@ -195,7 +196,7 @@
+ extern char *channelsuffixes[], *mode_names[], dirsep[], *pngdir;
+ extern int verbose, quiet, rsrc, extra, makedirs, numbered,
+ 		   help, split, nwarns, writepng, writelist, writexml, xmlout;
+-extern locale_t utf_locale;
++extern __locale_t utf_locale;
+ 
+ extern FILE *xml, *listfile;
+ 
+diff -u -r psdparse.old/util.c psdparse.new/util.c
+--- psdparse.old/util.c	2008-08-06 07:46:26.250500622 +0900
++++ psdparse.new/util.c	2008-08-06 08:14:35.683495528 +0900
+@@ -83,7 +83,7 @@
+ 	case '\"': fputs("&quot;", f); break;
+ 	default:
+ 		if(utf_locale)
+-			fputwc_l(c, f, utf_locale);
++			fputwc(c, f);
+ 		else if(c < 0x80 && isprint(c)) // ASCII printable
+ 			fputc(c, f);
+ 		else
