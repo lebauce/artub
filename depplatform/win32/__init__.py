@@ -18,7 +18,6 @@
 
 import sys, os, os.path
 
-startup_path = "startup\\index.html"
 test_path = "F:\\Documents and Settings\\bob\\Mes documents\\glumol\\foo2.xml"
 recent_file_path = "startup\\recents.html"
 directory_sep = "\\"

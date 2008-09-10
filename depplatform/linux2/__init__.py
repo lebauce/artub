@@ -18,8 +18,6 @@
 
 import sys
 
-startup_path = "startup/index_default.html"
-startup_path_mozilla = "startup/index.html"
 test_path = "/home/bob/glumol/foo2.xml"
 directory_sep = "/"
 index_templates_path = "startup/index_templates_default.html"

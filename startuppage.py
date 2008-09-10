@@ -22,13 +22,17 @@ from os.path import join, exists
 import depplatform as platform
 import time
 import sys
+import string
       
 class StartupPageBase:
+    startup_path = join("startup", "index.html")
+
     def __init__(self, artub_frame):
         self.url_handlers = { "new_project" : artub_frame.on_new, \
                               "open_project" : artub_frame.on_open, \
                               "import_template" : self.show_templates_page }
-        self.dyn_path = os.path.join(wx.GetApp().artub_path, 'startup', 'dynamic.html')
+        import tempfile
+        self.dyn_path = tempfile.mkstemp(suffix=".html")[1]
     
     def get_history_string(self):
         s = ''
@@ -124,6 +128,46 @@ class StartupPageBase:
 
     def load_page(self, page):
         self.Navigate(page)
+
+    def show_templates_page(self, evt = None):
+        self.update_template_page()
+        self.load_page(os.path.join(wx.GetApp().artub_path, platform.index_templates_path))
+        self.show()
+
+    def update_recent_files(self):
+        self.redirect_outputs()
+        try:
+            self.header()
+            print """<tr class="smalltab">
+    <td width="50%" height="30">Name</td>
+    <td width="50%">Modified</td>
+    </tr>"""
+            path = os.getcwd()
+            os.chdir(os.path.dirname(self.startup_path))
+            no_recent_files = True
+            n = self.artub_frame.filehistory.GetNoHistoryFiles()
+            for i in range(n):
+                try:
+                    s = '<tr class="project"><td height="30"><a href="' + self.artub_frame.filehistory.GetHistoryFile(i)
+                    s += '">' + self.artub_frame.filehistory.GetHistoryFile(i)
+                    s += '</a></td><td>' + time.ctime(os.stat(         \
+                            self.artub_frame.filehistory.GetHistoryFile(i))[8]) + '</td></tr>'
+                    print s
+                    no_recent_files = True
+                except:
+                    pass
+            if not n:
+                print "<tr><td><i>No recent file</i></td></tr>"
+            self.footer()
+            open('recents.html', 'w').write(self.restore_outputs())
+            self.ignore_before_navigate = True
+            self.load_page(os.path.join(wx.GetApp().artub_path, self.startup_path))
+            self.ignore_before_navigate = False
+            os.chdir(path)
+        except:
+            self.restore_outputs()
+            os.chdir(path)
+            raise
         
 if wx.Platform == '__WXMSW__':
     import wx.lib.iewin as iewin
@@ -137,49 +181,13 @@ if wx.Platform == '__WXMSW__':
             self.times = 0
             self.ignore_before_navigate = False
             self.must_go_back = False
-            
-        def update_recent_files(self):
-            self.redirect_outputs()
-            try:
-                self.header()
-                print """<tr class="smalltab">
-    <td width="50%" height="30">Name</td>
-    <td width="50%">Modified</td>
-    </tr>"""
-                path = os.getcwd()
-                os.chdir(os.path.dirname(platform.startup_path))
-                no_recent_files = True
-                n = self.artub_frame.filehistory.GetNoHistoryFiles()
-                for i in range(n):
-                    try:
-                        s = '<tr class="project"><td height="30"><a href="' + self.artub_frame.filehistory.GetHistoryFile(i)
-                        s += '">' + self.artub_frame.filehistory.GetHistoryFile(i)
-                        s += '</a></td><td>' + time.ctime(os.stat(         \
-                                self.artub_frame.filehistory.GetHistoryFile(i))[8]) + '</td></tr>'
-                        print s
-                        no_recent_files = True
-                    except:
-                        pass
-                if not n:
-                    print "<tr><td><i>No recent file</i></td></tr>"
-                self.footer()
-                open('recents.html', 'w').write(self.restore_outputs())
-                self.ignore_before_navigate = True
-                self.load_page(os.path.join(wx.GetApp().artub_path, platform.startup_path))
-                self.ignore_before_navigate = False
-                os.chdir(path)
-            except:
-                self.restore_outputs()
-                os.chdir(path)
-                raise
-                
 
         def OnDocumentComplete(self, evt):
             # print "OnDocumentComplete", self.must_go_back, evt.URL
             if self.must_go_back:
                 self.must_go_back = False
                 self.ignore_before_navigate = True
-                self.load_page(os.getcwd() + '\\' + platform.startup_path)
+                self.load_page(os.getcwd() + '\\' + self.startup_path)
         
         def OnBeforeNavigate2(self, evt):
             if evt.URL.startswith("http"):
@@ -202,11 +210,6 @@ if wx.Platform == '__WXMSW__':
             self.ignore_before_navigate = True
             self.load_page(os.path.join(wx.GetApp().artub_path, page))
 
-        def show_templates_page(self, evt = None):
-            self.update_template_page()
-            self.load_page(os.path.join(wx.GetApp().artub_path, platform.index_templates_path))
-            self.show()
-
 elif wx.Platform == '__WXMAC__':
     import wx.webkit as webkit
     class StartupPage(StartupPageBase, webkit.WebKitCtrl):
@@ -215,41 +218,6 @@ elif wx.Platform == '__WXMAC__':
             StartupPageBase.__init__(self, artub_frame)
             webkit.WebKitCtrl.__init__(self, parent, id, style = wx.NO_FULL_REPAINT_ON_RESIZE)
             webkit.EVT_WEBKIT_BEFORE_LOAD(parent, self.on_before_navigate)
-            
-        def update_recent_files(self):
-            self.redirect_outputs()
-            try:
-                self.header()
-                print """<tr class="smalltab">
-    <td width="50%" height="30">Name</td>
-    <td width="50%">Modified</td>
-    </tr>"""
-                path = os.getcwd()
-                os.chdir(os.path.dirname(platform.startup_path))
-                no_recent_files = True
-                n = self.artub_frame.filehistory.GetNoHistoryFiles()
-                for i in range(n):
-                    try:
-                        s = '<tr class="project"><td height="30"><a href="' + self.artub_frame.filehistory.GetHistoryFile(i)
-                        s += '">' + self.artub_frame.filehistory.GetHistoryFile(i)
-                        s += '</a></td><td>' + time.ctime(os.stat(         \
-                                self.artub_frame.filehistory.GetHistoryFile(i))[8]) + '</td></tr>'
-                        print s
-                        no_recent_files = True
-                    except:
-                        pass
-                if not n:
-                    print "<tr><td><i>No recent file</i></td></tr>"
-                self.footer()
-                open('recents.html', 'w').write(self.restore_outputs())
-                self.ignore_before_navigate = True
-                self.load_page(os.path.join(wx.GetApp().artub_path, platform.startup_path))
-                self.ignore_before_navigate = False
-                os.chdir(path)
-            except:
-                self.restore_outputs()
-                os.chdir(path)
-                raise
 
         def on_before_navigate(self, evt):
             if evt.URL.startswith("http"):
@@ -272,13 +240,10 @@ elif wx.Platform == '__WXMAC__':
             self.ignore_before_navigate = True
             self.load_page(os.path.join(wx.GetApp().artub_path, page))
 
-        def show_templates_page(self, evt = None):
-            self.update_template_page()
-            self.load_page(os.path.join(wx.GetApp().artub_path, platform.index_templates_path))
-            self.show()
 else:
   try:
     from wx.mozilla import *
+
     class StartupPage(StartupPageBase, MozillaBrowser):
         def __init__(self, parent, id, artub_frame):
             StartupPageBase.__init__(self, artub_frame)
@@ -350,7 +315,7 @@ else:
 <td width="50%">Modified</td>
 </tr>"""
             path = os.getcwd()
-            os.chdir(os.path.dirname(platform.startup_path))
+            os.chdir(os.path.dirname(self.startup_path))
             for i in range(self.artub_frame.filehistory.GetNoHistoryFiles()):
                 s += '<tr class="project"><td height="30"><a href="' + self.artub_frame.filehistory.GetHistoryFile(i)
                 s += '">' + self.artub_frame.filehistory.GetHistoryFile(i)
@@ -365,7 +330,7 @@ else:
             open('recents.html', 'w').write(s)
             os.chdir(path)
             self.ignore_before_navigate = True
-            self.load_page(join(os.getcwd(), platform.startup_path_mozilla))
+            self.load_page(join(os.getcwd(), self.startup_path_mozilla))
             self.ignore_before_navigate = False
             
         def load_page(self, page):
@@ -375,7 +340,7 @@ else:
             self.update_template_page()
             templates = open(self.dyn_path).read()
             open(self.dyn_path, "w").write(
-                open(platform.startup_path).read().replace(
+                open(self.startup_path).read().replace(
                     '<templates>',
                     templates
                 )
@@ -390,17 +355,61 @@ else:
             pass
 
   except:
+   try:
+    import wx.webview
+    class StartupPage(StartupPageBase, wx.webview.WebView):
+        def __init__(self, parent, id, artub_frame):
+            self.artub_frame = artub_frame
+            self.startup_path = join(artub_frame.path, "startup", "index_webkit_linux.html")
+            StartupPageBase.__init__(self, artub_frame)
+            wx.webview.WebView.__init__(self, parent, id, style = wx.NO_FULL_REPAINT_ON_RESIZE)
+            self.Bind(wx.webview.EVT_WEBVIEW_BEFORE_LOAD, self.on_before_navigate)
+            self.DecreaseTextSize()
+            self.DecreaseTextSize()
+
+        def load_page(self, page):
+            self.LoadURL("file://" + page)
+
+        def update_recent_files(self):
+            path = os.getcwd()
+            os.chdir(os.path.dirname(self.startup_path))
+            page = open(self.startup_path, 'r').read()
+            s = self.get_history_string()
+            open(self.dyn_path, 'w').write(string.Template(page).substitute(
+                                               artub_path = self.artub_frame.path,
+                                               recentfiles = s))
+            self.load_page(self.dyn_path)
+            os.chdir(path)
+
+        def on_before_navigate(self, evt):
+            url = evt.GetURL()
+            if url.startswith("http"):
+                evt.Skip()
+            else:
+                index = url.find('#')
+                if index != -1:
+                    command = url[index + 1:]
+                    self.url_handlers[command](evt)
+                    self.show_templates_page()
+                elif url.endswith('.glu'):
+                    self.artub_frame.open_project(url[7:])
+            evt.Skip()
+
+   except:
     import wx.html
+
     class StartupPage(StartupPageBase, wx.html.HtmlWindow):
+        startup_path = join("startup", "index_default.html")
+
         def __init__(self, parent, id, artub_frame):
             self.artub_frame = artub_frame
             StartupPageBase.__init__(self, artub_frame)
             wx.html.HtmlWindow.__init__(self, parent, id, style = wx.NO_FULL_REPAINT_ON_RESIZE)
-    
+
         def update_recent_files(self):
             path = os.getcwd()
-            os.chdir(os.path.dirname(platform.startup_path))
-            page = open(os.path.basename(platform.startup_path), 'r').read()
+            os.chdir(os.path.dirname(self.startup_path))
+            page = open(os.path.basename(self.startup_path), 'r').read()
             s = self.get_history_string()
             self.SetPage(page.replace("<recentfiles>", s))
             os.chdir(path)

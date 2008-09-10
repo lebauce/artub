@@ -4,7 +4,7 @@
 <TITLE>Startup</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <LINK 
-href="glumol.css" type=text/css rel=stylesheet>
+href="${artub_path}/startup/glumol.css" type=text/css rel=stylesheet>
 </HEAD>
 <BODY class="gbody">
 <BR>
@@ -17,7 +17,7 @@ href="glumol.css" type=text/css rel=stylesheet>
           <TBODY>
             <TR> 
               <TD colSpan=4 align="right" valign="top"> <DIV id=Layer1 
-            style="Z-INDEX: 1; LEFT: 100px; WIDTH: 171px; POSITION: absolute; TOP: 24px; HEIGHT: 43px"><img src="glu2.png" 
+            style="Z-INDEX: 1; LEFT: 100px; WIDTH: 171px; POSITION: absolute; TOP: 24px; HEIGHT: 43px"><img src="${artub_path}/startup/glu2.png" 
             alt=Glumol 
             width=171 height="43"></DIV></TD>
             </TR>
@@ -53,12 +53,18 @@ href="glumol.css" type=text/css rel=stylesheet>
                 </strong>
 				  <br>
 				  <br>
-                  <!--
-                  <iframe src="recents.html" width="100%" height="100%" frameborder="0">
-                  </iframe>
-                  <object data="recents.html" width="100%" height="100%" frameborder="0">
-                  </object>
-                  -->
+
+<table width="100%" cellspacing="0" class="projects">
+<tbody>
+
+<tr class="smalltab">
+    <td width="50%" height="30">Name</td>
+    <td width="50%">Modified</td>
+    </tr>
+                  ${recentfiles}
+</tbody>
+</table>
+
             </TR>
           </TBODY>
         </TABLE>
