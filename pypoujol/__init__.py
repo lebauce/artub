@@ -148,4 +148,4 @@ class Dialog(object):
         return input("Votre choix : ")
         
 Dialogue = Dialog
-
+global_dict = animation.global_dict

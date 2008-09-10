@@ -1,4 +1,5 @@
 CLANLIB_PATH=/Users/boblebauce/dev/ClanLib-0.8.1
+ARTUB_PATH=/Users/boblebauce/dev/artub
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanLib.framework/
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanApp.framework/
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/build/Development/ClanCore.framework/
@@ -18,3 +19,4 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/Frameworks/Ogg.framewo
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/Frameworks/SDL.framework/
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/Frameworks/Vorbis.framework/
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CLANLIB_PATH/Frameworks/mikmod.framework/
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$ARTUB_PATH

@@ -46,19 +46,19 @@ class Point:
         else: self.y = value
         
 anim_classes = {}
-parent_sprite = []
 global_dict = {}
+dependencies = {}
 
 class AnimationMetaClass(type):
     def __new__(self, name, bases, dct):
         n = type.__new__(self, name, bases, dct)
         ignore = False
-        if wx.GetApp():
+        if name != "Animation" and hasattr(wx.GetApp(), "gns"):
             Behaviour = wx.GetApp().gns.getattr("Behaviour")
             for i in bases:
                 if i == Behaviour or issubclass(i, Behaviour):
-                    ignore = True
-            if not ignore and name != "Animation" and dct.has_key("filenames"):
+                    return n
+            if dct.has_key("filenames"):
                 item = (name, dct["filenames"], n)
                 if not anim_classes.has_key(name):
                     anim_classes[name] = item

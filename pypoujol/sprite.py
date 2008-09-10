@@ -22,7 +22,8 @@ from time import clock
 from game import get_game
 from Enum import *
 from new import classobj
-from animation import Animation, AnimationMetaClass, global_dict
+import animation
+from animation import Animation, AnimationMetaClass
 from numpy import array, dot
 from math import cos, sin, pi
 import wx
@@ -32,12 +33,17 @@ class SpriteMetaClass(type):
     def __new__(self, name, bases, dct):
         n = type.__new__(self, name, bases, dct)
         autos = []
-        for i in dct.keys():
-            if isinstance(dct[i], type) and name != self.__class__.__name__:
-                dct[i].parent_class = n
-                global_dict[dct[i].__name__] = n
-            if getattr(dct[i], "auto", None):
-                autos.append((dct[i].auto, dct[i]))
+        for i in dct.values():
+            if isinstance(i, type) and name != self.__class__.__name__:
+                i.parent_class = n
+                animation.global_dict[i.__name__] = n
+            if getattr(i, "auto", None):
+                autos.append((i.auto, i))
+        for i in bases:
+            if animation.dependencies.has_key(i.__name__):
+                animation.dependencies[i.__name__].add(name)
+            else:
+                animation.dependencies[i.__name__] = set([name])
         n.__autos__ = autos
         return n
         

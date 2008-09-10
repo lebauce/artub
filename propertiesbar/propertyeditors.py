@@ -21,7 +21,8 @@ import string
 from types import *
 from propertyeditorcontrols import *
 from new import instancemethod
-from pypoujol import Animation, Sprite, Scene, global_dict
+import pypoujol
+from pypoujol import Animation, Sprite, Scene
 from log import log
 from types import FunctionType, ClassType
 from companions import ResourceCompanion, ColorCompanion, AnimationCompanion, \
@@ -702,7 +703,7 @@ class ResourcePropEdit(FactoryPropEdit):
         if self.constraints.classe.__name__ == "Scene":
             d = gns.globals
         else:
-            d = global_dict
+            d = pypoujol.global_dict
 
         #if self.constraints.context:
         #    d = getattr(self.constraints.obj, self.constraints.context).__dict__

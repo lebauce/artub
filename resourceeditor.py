@@ -26,6 +26,7 @@ from script import is_derived_from, get_full_name
 import types
 import new
 from undoredo import Action
+from string import Template as StringTemplate
 
 failed_loading_module_critical = 0
 
@@ -108,21 +109,33 @@ class Template(CPlugin):
                 dlg.ShowModal()
                 dlg.Destroy()
                 return -1
-    
+                
+    def import_data(self, src, dest = ""):
+        if not dest: dest = src
+        import shutil
+        shutil.copyfile(src, os.path.join(self.artub.project.project_path, os.path.basename(dest)))
+        
 class AutoTemplate(Template):
     needed_classes = []
     listing = ""
-    def do(self, evt, name=""):
-        project = self.artub.project
-        resource = CGlumolObject(project)
-        resource.template = True
-        if not name: name = self.resource_name
-        resource.name = name
+    resource_name = ""
+    def do(self, evt, name="", subst = {}, import_data = False):
         if self.needed_classes and self.check_classes(self.needed_classes):
             return
-        resource.listing = self.listing
+        project = self.artub.project
+        resource = CGlumolObject(project)
+        resource.template = getattr(self, "template", True)
+        if not name: name = self.resource_name
+        resource.name = name
+        if subst:
+            resource.listing = StringTemplate(self.listing).substitute(**subst)
+        else:
+            resource.listing = self.listing
         project.add_template(self.name)
         self.artub.add_template(resource)
+        if import_data and hasattr(self, "data"):
+            for res in self.data:
+                self.import_data(res, res)
         return resource
         
 class CEditorManager:

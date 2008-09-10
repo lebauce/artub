@@ -56,9 +56,13 @@ class ModifiedInterpreter(InteractiveInterpreter):
     def spawn_subprocess(self):
         args = self.subprocess_arglist
         if wx.Platform == '__WXMAC__':
-            exc = sys.executable + "w"
+            if sys.executable.startswith("/Library"):
+                exc = os.environ.get("ARTUB_PYTHON_EXECUTABLE", sys.executable)
+            else:
+                exc = sys.executable + "w"
         else:
             exc = sys.executable
+        print 'Running', exc
         self.rpcpid = os.spawnv(os.P_NOWAIT, exc, args)
 
     def build_subprocess_arglist(self):

@@ -17,7 +17,7 @@
 # along with Glumol.  If not, see <http://www.gnu.org/licenses/>.
 
 import wx
-import  wx.lib.filebrowsebutton as filebrowse
+import wx.lib.filebrowsebutton as filebrowse
 
 class NewAnimationDialog(wx.Dialog):
     def __init__(

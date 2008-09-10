@@ -46,13 +46,15 @@ class GlumolNamespace:
     def eval(self, listing):
         return eval(listing, self.globals, self.locals)
         
-    def run(self, listing, globs = None, locs = None):
+    def run(self, listing, module = __name__, globs = None, locs = None):
         if not globs:
             globs = self.globals
         if not locs:
             locs = self.globals
+        globs["__name__"] = module
         exec listing in globs, locs
-
+        globs["__name__"] = "glumolnamespace"
+        
     def getattr(self, name, *defaults):
         attrs = name.split('.')
         try: o = self.globals[attrs[0]]

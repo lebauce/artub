@@ -1,13 +1,14 @@
 #BOOST_LIB=libboost_python-mt-1_35.dylib
 BOOST_LIB=libboost_python-1_35.dylib
+STACKLESS=stackless
 
 if [ ! -f tools/macosx/pythonw ]; then
     gcc -arch ppc -arch i386 -o tools/macosx/pythonw tools/macosx/pythonw.c
 fi
 
-stackless setup.py py2app --excludes OpenGL --includes xml.sax.drivers2.drv_pyexpat,setuptools,wx.gizmos,wx.lib.ogl,ctypes,ctypes.util,poujol._poujol -f /Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/libpng.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/libjpeg.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/mikmod.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/Ogg.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/Vorbis.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/SDL.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanSignals.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanCore.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanDisplay.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanGL.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanApp.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanSDL.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanMikMod.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanSound.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanGUI.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanGUIStyleSilver.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanNetwork.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanVorbis.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanLib.framework
+$STACKLESS setup.py py2app --excludes OpenGL --includes xml.sax.drivers2.drv_pyexpat,setuptools,wx.gizmos,wx.lib.ogl,ctypes,ctypes.util,poujol._poujol -f /Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/libpng.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/libjpeg.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/mikmod.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/Ogg.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/Vorbis.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/SDL.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanSignals.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanCore.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanDisplay.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanGL.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanApp.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanSDL.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanMikMod.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanSound.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanGUI.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanGUIStyleSilver.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanNetwork.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanVorbis.framework,/Users/boblebauce/dev/ClanLib-0.8.0/MacOSX/ClanLib.framework
 source tools/macosx/dyld_library_path.sh
-stackless gendocs.py
+$STACKLESS gendocs.py
 
 mkdir -p dist/artub.app/Contents/Resources/include/python2.5
 cp /Library/Frameworks/Python.framework/Versions/2.5/include/python2.5/pyconfig.h dist/artub.app/Contents/Resources/include/python2.5/
@@ -66,6 +67,7 @@ find dist/Artub.app -name \.svn -exec rm -rf {} \;
 # cp /Library/Frameworks/Python.framework/Versions/Current/bin/pythonw dist/Artub.app/Contents/MacOS
 cp tools/macosx/run dist/Artub.app/Contents/MacOS/
 # cp tools/macosx/Info.plist dist/Artub.app/Contents
+rm -rf Glumol.dmg
 hdiutil create -srcfolder dist/Artub.app/ Glumol.dmg
 #rm -rf /Applications/Artub.app
 #mv dist/artub.app /Applications/Artub.app

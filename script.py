@@ -222,7 +222,7 @@ class CScript(CGlumolResource, Manipulator):
       self.listing = string.join(self.lines, '\n')
       
    def exec_listing(self):
-       wx.GetApp().gns.run(self.listing)
+       wx.GetApp().gns.run(self.listing, self.name)
        return ''
    
    def create_from_script(self, glob = None):
