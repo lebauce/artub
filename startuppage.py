@@ -356,19 +356,20 @@ else:
 
   except:
    try:
-    import wx.webview
-    class StartupPage(StartupPageBase, wx.webview.WebView):
+    import webkit2
+    class StartupPage(StartupPageBase, webkit.WebView):
         def __init__(self, parent, id, artub_frame):
             self.artub_frame = artub_frame
             self.startup_path = join(artub_frame.path, "startup", "index_webkit_linux.html")
             StartupPageBase.__init__(self, artub_frame)
-            wx.webview.WebView.__init__(self, parent, id, style = wx.NO_FULL_REPAINT_ON_RESIZE)
-            self.Bind(wx.webview.EVT_WEBVIEW_BEFORE_LOAD, self.on_before_navigate)
-            self.DecreaseTextSize()
-            self.DecreaseTextSize()
+            webkit.WebView.__init__(self) #, parent, id, style = wx.NO_FULL_REPAINT_ON_RESIZE)
+            # self.Bind(webkit.EVT_WEBVIEW_BEFORE_LOAD, self.on_before_navigate)
+            # self.DecreaseTextSize()
+            # self.DecreaseTextSize()
 
         def load_page(self, page):
-            self.LoadURL("file://" + page)
+            print dir(webkit.WebView)
+            webkit.WebView.open(self, "file://" + page)
 
         def update_recent_files(self):
             path = os.getcwd()

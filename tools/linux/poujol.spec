@@ -9,7 +9,7 @@ URL:            http://www.glumol.com
 Source0:        poujol-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  ClanLib-devel /usr/bin/bjam boost-devel
+BuildRequires:  ClanLib-devel /usr/bin/bjam boost-devel graphviz-devel
 Requires:       ClanLib boost
 
 %description
@@ -30,6 +30,7 @@ developing applications that use %{name}.
 
 
 %build
+BOOST_BUILD_PATH=/home/bob/dev/boost_1_35_0
 bjam toolset=gcc variant=release
 
 %install

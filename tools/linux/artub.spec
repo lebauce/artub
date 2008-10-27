@@ -15,6 +15,7 @@ Requires:       stackless wxPython numpy PyOpenGL poujol
 %description
 Artub is the GUI for the Glumol engine
 
+
 %prep
 %setup -q
 
@@ -22,11 +23,13 @@ Artub is the GUI for the Glumol engine
 %build
 # make %{?_smp_mflags}
 
+
 %install
 rm -rf $RPM_BUILD_ROOT
 # make install DESTDIR=$RPM_BUILD_ROOT
 mkdir -p ${RPM_BUILD_ROOT}/%{_datadir}/%{name}
 cp -R * ${RPM_BUILD_ROOT}/%{_datadir}/%{name}
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -35,7 +38,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc COPYING
-/usr/share/artub
+%{_datadir}/artub
 
 
 %changelog

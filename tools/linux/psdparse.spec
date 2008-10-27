@@ -25,6 +25,7 @@ It can optionally extract raster layers and spot/alpha channels to PNG files.
 %setup -q -n psdparse-1.0
 %patch0 -p1
 
+
 %build
 %configure --disable-static CFLAGS=-D_GNU_SOURCE
 make %{?_smp_mflags}
@@ -42,6 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post -p /sbin/ldconfig
 
+
 %postun -p /sbin/ldconfig
 
 
@@ -49,6 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc README.txt INSTALL
 %{_bindir}/psdparse
+
 
 %changelog
 * Wed Aug 6 2008 Sylvain Baubeau <bob@glumol.com> 0.1-1.0.svnr247
